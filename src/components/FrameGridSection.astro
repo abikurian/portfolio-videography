@@ -1,0 +1,61 @@
+---
+// FrameGridSection.astro — Behind the Cut process stills grid & before/after slider
+import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { BeforeAfterSlider } from './BeforeAfterSlider';
+---
+
+<section id="bts" class="relative w-full py-20 md:py-36 bg-bg border-b border-line">
+  <div class="max-w-container mx-auto px-5 md:px-10">
+    
+    {/* Section Timeline Marker Header */}
+    <div class="relative flex items-center mb-12">
+      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+        <span class="text-accent font-bold">04</span>
+        <span>— BEHIND THE CUT</span>
+      </div>
+      <div class="flex-grow h-[1px] bg-line"></div>
+    </div>
+
+    {/* 3-Column Tight Contact Sheet Frame Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2">
+      
+      {/* Tile 1: Interactive Before/After RAW vs GRADED Slider */}
+      <div class="lg:col-span-2">
+        <BeforeAfterSlider client:visible />
+      </div>
+
+      {/* Remaining Grid Stills */}
+      {PORTFOLIO_DATA.frameGrid.filter(item => !item.isBeforeAfter).map((item) => (
+        <div
+          key={item.id}
+          class="relative aspect-[16/9] bg-bg-raised border border-line overflow-hidden group skeleton-shimmer cursor-pointer"
+        >
+          {/* Still Frame Placeholder or Image */}
+          <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-bg-raised/90">
+            <div class="font-mono text-[11px] text-text-dim tracking-wider uppercase mb-1">
+              {item.title}
+            </div>
+            <div class="font-mono text-[9px] text-text-faint">
+              {item.code}
+            </div>
+          </div>
+
+          {/* Scrim Overlay */}
+          <div class="absolute inset-0 scrim-bottom opacity-70 pointer-events-none"></div>
+
+          {/* Mono Hover Caption */}
+          <div class="absolute bottom-2 left-2 right-2 font-mono text-[10px] text-text-dim bg-bg-sunken/90 p-1.5 border border-line opacity-80 group-hover:opacity-100 group-hover:text-accent transition-all duration-fast">
+            {item.code}
+          </div>
+        </div>
+      ))}
+
+    </div>
+
+    {/* Footer Meta Note */}
+    <div class="mt-6 text-right font-mono text-[11px] text-text-faint tracking-widest uppercase">
+      [ PRODUCTION CONTACT SHEET — SONY S-LOG3 & DAVINCI RESOLVE NODES ]
+    </div>
+
+  </div>
+</section>

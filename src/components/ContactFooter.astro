@@ -1,0 +1,80 @@
+---
+// ContactFooter.astro — Big display CTA line, copy email with toast, socials & footer row
+import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { ToastNotification } from './ToastNotification';
+---
+
+<footer id="contact" class="relative w-full bg-bg-raised border-t border-line">
+  <div class="max-w-container mx-auto px-5 md:px-10 py-20 md:py-36">
+    
+    {/* Section Timeline Marker Header */}
+    <div class="relative flex items-center mb-12">
+      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg-raised z-10 flex items-center space-x-2">
+        <span class="text-accent font-bold">06</span>
+        <span>— CONTACT</span>
+      </div>
+      <div class="flex-grow h-[1px] bg-line"></div>
+    </div>
+
+    {/* Display CTA Headline */}
+    <div class="flex flex-col space-y-8 max-w-4xl">
+      <h2 class="font-display text-display font-extrabold text-text tracking-tighter leading-[0.92]">
+        {PORTFOLIO_DATA.contact.headline}
+      </h2>
+
+      <p class="font-sans text-body-lg text-text-dim max-w-xl">
+        Available for beat-synced commercials, 10-bit color grading, short narrative edits, and festival promos.
+      </p>
+
+      {/* Copy-to-Clipboard Email Component */}
+      <div class="pt-4">
+        <ToastNotification client:load email={PORTFOLIO_DATA.contact.email} />
+        <div class="font-mono text-[11px] text-text-faint tracking-widest uppercase mt-2">
+          [ CLICK EMAIL TO COPY TO CLIPBOARD ]
+        </div>
+      </div>
+    </div>
+
+    {/* Social Links Row */}
+    <div class="mt-20 pt-8 border-t border-line flex flex-wrap items-center justify-between gap-6 font-mono text-xs tracking-widest uppercase">
+      <div class="flex flex-wrap items-center gap-6">
+        {PORTFOLIO_DATA.contact.socials.map((social) => (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-dim hover:text-accent transition-colors duration-fast"
+          >
+            {social.name} ↗
+          </a>
+        ))}
+      </div>
+
+      <div class="text-text-faint text-[11px]">
+        S-LOG3 / RE.709 / 10-BIT
+      </div>
+    </div>
+
+  </div>
+
+  {/* Bottom Footer Row */}
+  <div class="w-full border-t border-line bg-bg-sunken py-6">
+    <div class="max-w-container mx-auto px-5 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-text-faint">
+      <div>
+        © 2026 {PORTFOLIO_DATA.name}
+      </div>
+
+      <div class="text-text-dim">
+        Designed & edited in Kochi, Kerala
+      </div>
+
+      <a
+        href="#"
+        class="hover:text-accent transition-colors uppercase tracking-wider"
+      >
+        Back to top ↑
+      </a>
+    </div>
+  </div>
+</footer>

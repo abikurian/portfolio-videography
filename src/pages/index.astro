@@ -1,0 +1,41 @@
+---
+// index.astro — Single Page Video Editing Portfolio for ABI KURIAN VARGHESE
+import Layout from "../layouts/Layout.astro";
+import { HeaderNav } from "../components/HeaderNav";
+import HeroSection from "../components/HeroSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import { SelectedWorkSection } from "../components/SelectedWorkSection";
+import { ShowreelPlayer } from "../components/ShowreelPlayer";
+import FrameGridSection from "../components/FrameGridSection.astro";
+import TimelineStrip from "../components/TimelineStrip.astro";
+import ContactFooter from "../components/ContactFooter.astro";
+import { PORTFOLIO_DATA } from "../data/portfolioData";
+---
+
+<Layout>
+  {/* Sticky Navigation Bar with Live Scroll Timecode */}
+  <HeaderNav client:load wordmarkName={PORTFOLIO_DATA.name} />
+
+  <main class="w-full">
+    {/* Section 00 — Hero with Looping Video Reel / Fallback & REC Indicator */}
+    <HeroSection />
+
+    {/* Section 01 — About / Statement / Mono Facts */}
+    <AboutSection />
+
+    {/* Section 02 — Selected Work (Project Rows & Lightbox Modal) */}
+    <SelectedWorkSection client:visible />
+
+    {/* Section 03 — Showreel Player (NLE Player & Chapter Markers) */}
+    <ShowreelPlayer client:visible />
+
+    {/* Section 04 — Behind the Cut Frame Grid & RAW vs GRADED Slider */}
+    <FrameGridSection />
+
+    {/* Section 05 — Tools & Process 3-Track Timeline Strip */}
+    <TimelineStrip />
+
+    {/* Section 06 — Contact & Footer */}
+    <ContactFooter />
+  </main>
+</Layout>

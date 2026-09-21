@@ -1,0 +1,83 @@
+---
+// TimelineStrip.astro — NLE 3-track timeline block diagram & tools process list
+import { PORTFOLIO_DATA } from '../data/portfolioData';
+---
+
+<section id="tools" class="relative w-full py-20 md:py-36 bg-bg border-b border-line">
+  <div class="max-w-container mx-auto px-5 md:px-10">
+    
+    {/* Section Timeline Marker Header */}
+    <div class="relative flex items-center mb-12">
+      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+        <span class="text-accent font-bold">05</span>
+        <span>— TOOLS & PROCESS</span>
+      </div>
+      <div class="flex-grow h-[1px] bg-line"></div>
+    </div>
+
+    {/* 3-Track NLE Timeline Block Diagram */}
+    <div class="relative w-full bg-bg-sunken border border-line p-4 md:p-6 mb-12 overflow-x-auto">
+      
+      {/* Playhead Marker Overlay (Positioned over Fine Cut) */}
+      <div class="absolute top-0 bottom-0 left-[58%] w-[2px] bg-accent z-20 pointer-events-none hidden sm:block">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[8px] border-t-accent"></div>
+      </div>
+
+      <div class="flex flex-col space-y-3 min-w-[640px]">
+        {PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
+          <div key={track.name} class="flex items-center space-x-3">
+            {/* Track Name Header */}
+            <div class="w-16 flex flex-col font-mono text-[10px] text-text-faint tracking-wider uppercase shrink-0">
+              <span class="text-accent font-bold">{track.name}</span>
+              <span>{track.label}</span>
+            </div>
+
+            {/* Track Blocks */}
+            <div class="flex-grow flex items-center space-x-1">
+              {track.blocks.map((block) => (
+                <div
+                  key={block.title}
+                  class={`h-10 border text-center flex items-center justify-center px-2 font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${block.width} ${
+                    block.highlight
+                      ? 'bg-accent/15 border-accent text-accent font-semibold'
+                      : 'bg-bg-raised border-line text-text-dim hover:border-line-strong'
+                  }`}
+                >
+                  {block.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Timeline Timecode Ruler Footer */}
+      <div class="mt-4 pt-3 border-t border-line flex items-center justify-between font-mono text-[10px] text-text-faint tracking-widest uppercase">
+        <span>00:00:00:00</span>
+        <span>00:00:45:00</span>
+        <span class="text-accent font-medium">00:01:30:00 [PLAYHEAD]</span>
+        <span>00:02:15:00</span>
+        <span>00:02:30:00</span>
+      </div>
+    </div>
+
+    {/* Tools & Gear Plain Text Strip */}
+    <div class="pt-6 border-t border-line flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="font-mono text-xs text-text-faint uppercase tracking-widest">
+        PRIMARY SUITE & GEAR:
+      </div>
+
+      <div class="font-mono text-sm md:text-base text-text font-medium tracking-wider flex flex-wrap gap-2">
+        {PORTFOLIO_DATA.toolsAndProcess.toolsList.map((tool, index) => (
+          <span key={tool} class="flex items-center">
+            <span class="hover:text-accent transition-colors cursor-default">{tool}</span>
+            {index < PORTFOLIO_DATA.toolsAndProcess.toolsList.length - 1 && (
+              <span class="text-accent mx-3">/</span>
+            )}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

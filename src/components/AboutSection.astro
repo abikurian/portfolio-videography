@@ -1,0 +1,60 @@
+---
+// AboutSection.astro — Who I am, statement, and mono facts row
+import { PORTFOLIO_DATA } from '../data/portfolioData';
+---
+
+<section id="about" class="relative w-full py-20 md:py-36 bg-bg border-b border-line">
+  <div class="max-w-container mx-auto px-5 md:px-10">
+    {/* Section Timeline Marker Header */}
+    <div class="relative flex items-center mb-16 md:mb-24">
+      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+        <span class="text-accent font-bold">01</span>
+        <span>— ABOUT</span>
+      </div>
+      <div class="flex-grow h-[1px] bg-line"></div>
+    </div>
+
+    {/* 2-Column Desktop Grid */}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      {/* Left Column (4 cols): Gear / Studio Still with Skeleton Fallback */}
+      <div class="lg:col-span-4 relative group">
+        <div class="aspect-[3/4] w-full skeleton-shimmer border border-line relative overflow-hidden bg-bg-raised">
+          <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-bg-raised/80 border border-line">
+            <div class="w-12 h-12 border border-line flex items-center justify-center mb-4 text-accent font-mono text-xs">
+              S-LOG
+            </div>
+            <div class="font-mono text-xs text-text-dim tracking-wider uppercase mb-1">
+              STUDIO & EDIT DECK
+            </div>
+            <div class="font-mono text-[10px] text-text-faint">
+              KOCHI, KERALA
+            </div>
+          </div>
+        </div>
+        {/* Hairline Frame Accent */}
+        <div class="absolute -bottom-2 -right-2 w-full h-full border border-line-strong -z-10 group-hover:border-accent transition-colors duration-base"></div>
+      </div>
+
+      {/* Right Column (7 cols): Editorial Statement & Bio */}
+      <div class="lg:col-span-8 flex flex-col space-y-6 md:space-y-8">
+        <h2 class="font-display text-h2 text-text tracking-tight font-bold leading-[1.1]">
+          {PORTFOLIO_DATA.about.statement}
+        </h2>
+
+        <p class="font-sans text-body text-text-dim max-w-[65ch] leading-relaxed">
+          {PORTFOLIO_DATA.about.bio}
+        </p>
+
+        {/* 4-Column Hairline-Separated Facts Row */}
+        <div class="pt-8 border-t border-line grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-xs">
+          {PORTFOLIO_DATA.about.facts.map((fact) => (
+            <div class="flex flex-col space-y-1">
+              <span class="text-text-faint tracking-widest text-[10px] uppercase">{fact.label}</span>
+              <span class="text-text font-medium tracking-wider">{fact.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

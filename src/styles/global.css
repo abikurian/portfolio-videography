@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Color Tokens */
+    --bg: #131211;
+    --bg-raised: #1B1A18;
+    --bg-sunken: #0D0C0B;
+    --line: #2B2926;
+    --line-strong: #3D3A35;
+    --text: #EDE9E1;
+    --text-dim: #A39E94;
+    --text-faint: #6B675F;
+    --accent: #E8552B;
+    --accent-soft: rgba(232, 85, 43, 0.15);
+    --ok: #7FB069;
+
+    /* Typography */
+    --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Instrument Serif", Georgia, serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+    /* Motion */
+    --ease-cut: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 160ms;
+    --dur-base: 320ms;
+    --dur-slow: 700ms;
+  }
+
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent-soft);
+    color: var(--text);
+  }
+
+  /* Custom Focus Ring */
+  *:focus-visible {
+    outline: 2px solid var(--accent) !important;
+    outline-offset: 3px !important;
+  }
+}
+
+/* Monospace Utilities & Metadata */
+.font-mono-meta {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 1vw, 0.75rem);
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Film Scrim & Vignette Overlays */
+.scrim-bottom {
+  background: linear-gradient(to top, rgba(13, 12, 11, 0.9) 0%, rgba(13, 12, 11, 0.4) 60%, transparent 100%);
+}
+
+.hero-vignette {
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Skeleton Loading Shimmer for Video Wells and Frame Grid */
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-raised);
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(43, 41, 38, 0) 0,
+    rgba(61, 58, 53, 0.4) 50%,
+    rgba(43, 41, 38, 0) 100%
+  );
+  animation: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-sunken);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

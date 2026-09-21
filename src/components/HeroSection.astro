@@ -1,0 +1,78 @@
+---
+// HeroSection.astro — Bottom-left anchored title overlay with 3-line headline and subtle eyebrow
+import { PORTFOLIO_DATA } from '../data/portfolioData';
+---
+
+<section class="relative w-full h-[100svh] min-h-[560px] flex items-end overflow-hidden bg-bg border-b border-line">
+  {/* Full-bleed background video well with skeleton fallback */}
+  <div class="absolute inset-0 w-full h-full skeleton-shimmer z-0">
+    {PORTFOLIO_DATA.hero.heroVideoUrl ? (
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="/assets/hero-poster.jpg"
+        class="w-full h-full object-cover"
+      >
+        <source src={PORTFOLIO_DATA.hero.heroVideoUrl} type="video/mp4" />
+      </video>
+    ) : (
+      /* Fallback Skeleton State when video isn't uploaded yet */
+      <div class="w-full h-full bg-bg-raised flex items-center justify-center relative">
+        <div class="text-center font-mono text-xs text-text-faint tracking-widest uppercase">
+          [ REEL PREVIEW — KOCHI, KERALA ]
+        </div>
+      </div>
+    )}
+  </div>
+
+  {/* Overlays: Hero Vignette + Bottom Scrim */}
+  <div class="absolute inset-0 hero-vignette pointer-events-none z-[1]"></div>
+  <div class="absolute inset-0 scrim-bottom pointer-events-none z-[2]"></div>
+
+  {/* Title Card Container (Strict Bottom-Left Overlay) */}
+  <div class="relative z-10 max-w-container mx-auto w-full px-5 md:px-10 pb-16 md:pb-20">
+    <div class="max-w-3xl flex flex-col space-y-4 md:space-y-5 text-left">
+      
+      {/* Subtle Sans-Serif Eyebrow Subheader */}
+      <div class="font-sans text-xs tracking-widest text-text-dim uppercase font-semibold">
+        {PORTFOLIO_DATA.hero.meta}
+      </div>
+
+      {/* Main Display Headline (Locked 3-Line Lineation) */}
+      <h1 class="font-display font-extrabold text-display text-text tracking-tighter leading-[0.9]">
+        <span class="block">{PORTFOLIO_DATA.hero.headlineLine1}</span>
+        <span class="block">{PORTFOLIO_DATA.hero.headlineLine2}</span>
+        <span class="block">
+          {PORTFOLIO_DATA.hero.headlineLine3}
+          <span class="font-serif italic font-normal text-accent">{PORTFOLIO_DATA.hero.headlineAccent}</span>
+        </span>
+      </h1>
+
+      {/* Subtext Paragraph */}
+      <p class="font-sans text-body-lg text-text-dim max-w-[44ch] leading-snug">
+        {PORTFOLIO_DATA.hero.subtext}
+      </p>
+
+      {/* Minimal 1px Hairline Action Buttons */}
+      <div class="flex flex-wrap items-center gap-4 pt-3">
+        <a
+          href="#reel"
+          class="inline-flex items-center px-5 py-2.5 bg-transparent border border-line text-text hover:border-accent hover:text-accent font-mono text-xs uppercase tracking-widest transition-colors duration-fast group"
+        >
+          <span>Watch the reel</span>
+          <span class="ml-2 text-accent transition-transform duration-fast group-hover:translate-x-1">▸</span>
+        </a>
+
+        <a
+          href="#work"
+          class="inline-flex items-center px-4 py-2.5 text-text-dim font-mono text-xs uppercase tracking-widest underline underline-offset-4 decoration-line hover:text-accent hover:decoration-accent transition-colors duration-fast"
+        >
+          Selected work ↓
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
