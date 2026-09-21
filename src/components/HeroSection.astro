@@ -4,27 +4,26 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 ---
 
 <section class="relative w-full h-[100svh] min-h-[560px] flex items-end overflow-hidden bg-bg border-b border-line">
-  {/* Full-bleed background video well with skeleton fallback */}
+  {/* Full-bleed background video well with graceful skeleton fallback */}
   <div class="absolute inset-0 w-full h-full skeleton-shimmer z-0">
-    {PORTFOLIO_DATA.hero.heroVideoUrl ? (
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        poster="/assets/hero-poster.jpg"
-        class="w-full h-full object-cover"
-      >
-        <source src={PORTFOLIO_DATA.hero.heroVideoUrl} type="video/mp4" />
-      </video>
-    ) : (
-      /* Fallback Skeleton State when video isn't uploaded yet */
-      <div class="w-full h-full bg-bg-raised flex items-center justify-center relative">
-        <div class="text-center font-mono text-xs text-text-faint tracking-widest uppercase">
-          [ REEL PREVIEW — KOCHI, KERALA ]
-        </div>
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      src={PORTFOLIO_DATA.hero.heroVideoUrl}
+      poster="/assets/hero-poster.jpg"
+      class="w-full h-full object-cover relative z-10"
+      onerror="this.style.display='none';"
+    >
+    </video>
+    
+    {/* Background Fallback Skeleton State (Shown when video fails or is loading) */}
+    <div class="absolute inset-0 w-full h-full bg-bg-raised flex items-center justify-center z-0">
+      <div class="text-center font-mono text-xs text-text-faint tracking-widest uppercase">
+        [ REEL PREVIEW — KOCHI, KERALA ]
       </div>
-    )}
+    </div>
   </div>
 
   {/* Overlays: Hero Vignette + Bottom Scrim */}

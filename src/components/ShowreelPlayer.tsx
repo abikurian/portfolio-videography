@@ -7,12 +7,13 @@ export const ShowreelPlayer: React.FC = () => {
   const [duration, setDuration] = useState(90); // 1:30 default
   const [isMuted, setIsMuted] = useState(false);
   const [hoveredChapter, setHoveredChapter] = useState<string | null>(null);
+  const [videoError, setVideoError] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const togglePlay = () => {
-    if (videoRef.current) {
+    if (videoRef.current && !videoError) {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
@@ -94,12 +95,12 @@ export const ShowreelPlayer: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [duration, isPlaying, isMuted]);
+  }, [duration, isPlaying, isMuted, videoError]);
 
-  // Demo play timer increment for skeleton mode
+  // Demo play timer increment for skeleton mode when video error occurs
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (isPlaying && !videoRef.current?.src) {
+    if (isPlaying && (videoError || !videoRef.current)) {
       interval = setInterval(() => {
         setCurrentTime((prev) => {
           if (prev >= duration) {
@@ -111,7 +112,7 @@ export const ShowreelPlayer: React.FC = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, duration]);
+  }, [isPlaying, duration, videoError]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -141,10 +142,13 @@ export const ShowreelPlayer: React.FC = () => {
         >
           {/* Real Video or Fallback Skeleton */}
           <div className="w-full h-full skeleton-shimmer relative flex items-center justify-center">
-            {PORTFOLIO_DATA.hero.heroVideoUrl ? (
+            {PORTFOLIO_DATA.showreel.showreelVideoUrl && !videoError ? (
               <video
                 ref={videoRef}
-                src={PORTFOLIO_DATA.hero.heroVideoUrl}
+                src={PORTFOLIO_DATA.showreel.showreelVideoUrl}
+                playsInline
+                muted={isMuted}
+                onError={() => setVideoError(true)}
                 className="w-full h-full object-cover"
                 onTimeUpdate={() => {
                   if (videoRef.current) setCurrentTime(videoRef.current.currentTime);
@@ -164,7 +168,7 @@ export const ShowreelPlayer: React.FC = () => {
                 </div>
                 <button
                   onClick={togglePlay}
-                  className="px-6 py-3 bg-text text-bg font-mono text-xs uppercase tracking-wider font-semibold hover:bg-accent hover:text-bg transition-colors"
+                  className="px-6 py-3 bg-transparent border border-line text-text font-mono text-xs uppercase tracking-wider hover:border-accent hover:text-accent transition-colors"
                 >
                   {isPlaying ? 'PAUSE EDIT ❚❚' : 'PLAY SHOWREEL ▸'}
                 </button>
@@ -175,14 +179,14 @@ export const ShowreelPlayer: React.FC = () => {
             <button
               onClick={togglePlay}
               aria-label={isPlaying ? 'Pause' : 'Play'}
-              className="absolute top-4 left-4 w-10 h-10 bg-bg-sunken/80 border border-line text-text hover:border-accent flex items-center justify-center font-mono text-xs transition-colors"
+              className="absolute top-4 left-4 w-10 h-10 bg-bg-sunken/80 border border-line text-text hover:border-accent flex items-center justify-center font-mono text-xs transition-colors z-20"
             >
               {isPlaying ? '❚❚' : '▸'}
             </button>
           </div>
 
           {/* Controls Bar */}
-          <div className="absolute bottom-0 left-0 right-0 bg-bg-sunken/95 border-t border-line p-3 flex flex-col space-y-2">
+          <div className="absolute bottom-0 left-0 right-0 bg-bg-sunken/95 border-t border-line p-3 flex flex-col space-y-2 z-20">
             
             {/* Scrubber Bar with Chapter Markers */}
             <div
