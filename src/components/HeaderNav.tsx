@@ -13,6 +13,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
   const navItems = [
     { id: 'about', label: 'ABOUT', href: '#about' },
     { id: 'work', label: 'WORK', href: '#work' },
+    { id: 'frames', label: 'FRAMES', href: '#frames' },
     { id: 'showreel', label: 'SHOWREEL', href: '#showreel' },
     { id: 'tools', label: 'TOOLS', href: '#tools' },
     { id: 'contact', label: 'CONTACT', href: '#contact' },

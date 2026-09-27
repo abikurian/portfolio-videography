@@ -1,0 +1,75 @@
+---
+// SelectedFrames.astro — Gallery of color-graded video stills
+const frames = [
+  {
+    src: '/images/frame-1.jpg',
+    title: 'NIGHT MARKET — S-LOG CUT',
+    tag: 'COLOR GRADE 01',
+  },
+  {
+    src: '/images/frame-2.jpg',
+    title: 'GOLDEN RIDGE — LANDSCAPE GRADE',
+    tag: 'COLOR GRADE 02',
+  },
+  {
+    src: '/images/frame-3.jpg',
+    title: 'RHYTHM & STEEL — AUTOMOTIVE',
+    tag: 'COLOR GRADE 03',
+  },
+  {
+    src: '/images/frame-4.jpg',
+    title: 'CONCERT TRANSMISSION — LIVE CUT',
+    tag: 'COLOR GRADE 04',
+  },
+];
+---
+
+<section id="frames" class="relative w-full py-20 md:py-36 bg-bg border-b border-line">
+  <div class="max-w-container mx-auto px-5 md:px-10">
+    
+    {/* Section Timeline Marker Header */}
+    <div class="relative flex items-center mb-12 md:mb-16">
+      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+        <span class="text-accent font-bold">03</span>
+        <span>— SELECTED FRAMES</span>
+      </div>
+      <div class="flex-grow h-[1px] bg-line"></div>
+    </div>
+
+    {/* Responsive Image Grid (1 col mobile, 2 cols tablet & desktop) */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {frames.map((frame, index) => (
+        <div
+          key={frame.src}
+          class="relative aspect-[16/9] w-full bg-bg-raised border border-line overflow-hidden group transition-all duration-base hover:border-line-strong"
+        >
+          {/* Frame Image */}
+          <img
+            src={frame.src}
+            alt={frame.title}
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-500 ease-cut group-hover:scale-[1.03] group-hover:brightness-105"
+          />
+
+          {/* Bottom Scrim Overlay */}
+          <div class="absolute inset-0 scrim-bottom opacity-60 pointer-events-none"></div>
+
+          {/* Top-Right Index Label */}
+          <div class="absolute top-3 right-3 font-mono text-[10px] text-text-faint bg-bg-sunken/80 px-2 py-0.5 border border-line">
+            [ STILL 0{index + 1} ]
+          </div>
+
+          {/* Bottom Info Bar */}
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[11px] text-text-dim group-hover:text-text transition-colors">
+            <span class="truncate pr-2">{frame.title}</span>
+            <span class="text-accent font-medium shrink-0">{frame.tag}</span>
+          </div>
+
+          {/* Bottom Accent Line Draw on Hover */}
+          <div class="absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-500 ease-cut w-0 group-hover:w-full"></div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

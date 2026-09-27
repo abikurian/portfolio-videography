@@ -5,6 +5,7 @@ import { HeaderNav } from "../components/HeaderNav";
 import HeroSection from "../components/HeroSection.astro";
 import AboutSection from "../components/AboutSection.astro";
 import { SelectedWorkSection } from "../components/SelectedWorkSection";
+import SelectedFrames from "../components/SelectedFrames.astro";
 import { ShowreelPlayer } from "../components/ShowreelPlayer";
 import TimelineStrip from "../components/TimelineStrip.astro";
 import ContactFooter from "../components/ContactFooter.astro";
@@ -25,13 +26,16 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
     {/* Section 02 — Selected Work (Project Rows & Lightbox Modal) */}
     <SelectedWorkSection client:load />
 
-    {/* Section 03 — Showreel Player (NLE Player & Chapter Markers) */}
+    {/* Section 03 — Selected Frames (Color Graded Stills Gallery) */}
+    <SelectedFrames />
+
+    {/* Section 04 — Showreel Player (NLE Player & Chapter Markers) */}
     <ShowreelPlayer client:load />
 
-    {/* Section 04 — Tools & Process 3-Track Timeline Strip */}
+    {/* Section 05 — Tools & Process 3-Track Timeline Strip */}
     <TimelineStrip />
 
-    {/* Section 05 — Contact & Footer */}
+    {/* Section 06 — Contact & Footer */}
     <ContactFooter />
   </main>
 </Layout>
