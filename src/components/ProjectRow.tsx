@@ -60,6 +60,17 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               <span>·</span>
               <span className="text-accent">RUNTIME: {project.runtime}</span>
             </div>
+
+            {/* Play Button in text column */}
+            <div className="pt-2">
+              <button
+                onClick={() => onOpenLightbox(project)}
+                className="inline-flex items-center space-x-2 px-4 py-2 border border-line hover:border-accent text-text hover:text-accent font-mono text-xs uppercase tracking-widest transition-colors duration-fast bg-bg-raised hover:bg-bg-sunken group/btn cursor-pointer"
+              >
+                <span>PLAY FULL EDIT</span>
+                <span className="text-accent group-hover/btn:translate-x-1 transition-transform">▸</span>
+              </button>
+            </div>
           </div>
 
           {/* Video Preview Well Column */}

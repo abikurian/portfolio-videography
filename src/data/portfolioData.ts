@@ -72,7 +72,7 @@ export const PORTFOLIO_DATA = {
       oneLiner: "Fast-cut event highlight video driven by aggressive audio transients, speed ramps, and 10-bit color pop.",
       thumbnailUrl: "",
       previewVideoUrl: "/videos/fuginiz-preview.mp4",
-      fullVideoUrl: "/videos/showreel-full.mp4",
+      fullVideoUrl: "/videos/hero-loop.mp4",
     },
     {
       id: "whispers-of-motion",
@@ -86,7 +86,7 @@ export const PORTFOLIO_DATA = {
       oneLiner: "A quiet visual study on light and stillness, graded in 10-bit S-Log3 with film print emulation.",
       thumbnailUrl: "",
       previewVideoUrl: "/videos/project-2-preview.mp4",
-      fullVideoUrl: "/videos/showreel-full.mp4",
+      fullVideoUrl: "/videos/fast-cut-full.mp4",
     },
     {
       id: "rhythm-and-steel",
@@ -100,7 +100,7 @@ export const PORTFOLIO_DATA = {
       oneLiner: "Ultra-fast cuts synchronized frame-by-frame with engine revs and transient audio hits.",
       thumbnailUrl: "",
       previewVideoUrl: "/videos/project-3-preview.mp4",
-      fullVideoUrl: "/videos/showreel-full.mp4",
+      fullVideoUrl: "/videos/hero-loop.mp4",
     },
     {
       id: "grade-and-grain",
@@ -114,7 +114,7 @@ export const PORTFOLIO_DATA = {
       oneLiner: "Step-by-step node tree transformation from flat S-Log3 footage to Kodak film print contrast.",
       thumbnailUrl: "",
       previewVideoUrl: "/videos/project-4-preview.mp4",
-      fullVideoUrl: "/videos/showreel-full.mp4",
+      fullVideoUrl: "/videos/fast-cut-full.mp4",
     }
   ] as Project[],
 
