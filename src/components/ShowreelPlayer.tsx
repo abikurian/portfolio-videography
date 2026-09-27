@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 export const ShowreelPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(90); // 1:30 default
+  const [duration, setDuration] = useState(PORTFOLIO_DATA.showreel.totalSeconds || 25); // 00:25 default
   const [isMuted, setIsMuted] = useState(false);
   const [hoveredChapter, setHoveredChapter] = useState<string | null>(null);
   const [videoError, setVideoError] = useState(false);

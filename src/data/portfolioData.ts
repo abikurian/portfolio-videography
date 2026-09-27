@@ -121,14 +121,14 @@ export const PORTFOLIO_DATA = {
   showreel: {
     title: "2025 EDITING SHOWREEL",
     showreelVideoUrl: "/videos/showreel-full.mp4",
-    duration: "01:30",
-    totalSeconds: 90,
+    duration: "00:25",
+    totalSeconds: 25,
     chapters: [
       { timecode: "00:00", seconds: 0, title: "01 — Kinetic Fast Edit", projectIndex: "01" },
-      { timecode: "00:18", seconds: 18, title: "02 — Goa IV Fast Edit", projectIndex: "02" },
-      { timecode: "00:42", seconds: 42, title: "03 — Fuginiz Tech Fest Promo", projectIndex: "03" },
-      { timecode: "01:05", seconds: 65, title: "04 — Rhythm & Steel Automotive", projectIndex: "04" },
-      { timecode: "01:20", seconds: 80, title: "05 — S-Log Color Grade", projectIndex: "05" },
+      { timecode: "00:05", seconds: 5, title: "02 — Goa IV Fast Edit", projectIndex: "02" },
+      { timecode: "00:11", seconds: 11, title: "03 — Fuginiz Tech Fest Promo", projectIndex: "03" },
+      { timecode: "00:17", seconds: 17, title: "04 — Rhythm & Steel Automotive", projectIndex: "04" },
+      { timecode: "00:22", seconds: 22, title: "05 — S-Log Color Grade", projectIndex: "05" },
     ] as ShowreelChapter[],
   },
 
