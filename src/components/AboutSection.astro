@@ -16,20 +16,14 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 
     {/* 2-Column Desktop Grid */}
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-      {/* Left Column (4 cols): Gear / Studio Still with Skeleton Fallback */}
+      {/* Left Column (4 cols): Color Grading Suite Still */}
       <div class="lg:col-span-4 relative group">
-        <div class="aspect-[3/4] w-full skeleton-shimmer border border-line relative overflow-hidden bg-bg-raised">
-          <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-bg-raised/80 border border-line">
-            <div class="w-12 h-12 border border-line flex items-center justify-center mb-4 text-accent font-mono text-xs">
-              S-LOG
-            </div>
-            <div class="font-mono text-xs text-text-dim tracking-wider uppercase mb-1">
-              STUDIO & EDIT DECK
-            </div>
-            <div class="font-mono text-[10px] text-text-faint">
-              KOCHI, KERALA
-            </div>
-          </div>
+        <div class="aspect-[3/4] w-full border border-line relative overflow-hidden bg-bg-raised">
+          <img
+            src="/images/about-grade.jpg"
+            alt="Color Grading Studio Deck"
+            class="w-full h-full object-cover transition-transform duration-500 ease-cut group-hover:scale-[1.02]"
+          />
         </div>
         {/* Hairline Frame Accent */}
         <div class="absolute -bottom-2 -right-2 w-full h-full border border-line-strong -z-10 group-hover:border-accent transition-colors duration-base"></div>
