@@ -8,27 +8,10 @@ interface ProjectRowProps {
 }
 
 export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenLightbox }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current && !videoError) {
-      if (isHovered) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
-    }
-  }, [isHovered, videoError]);
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full py-16 md:py-24 border-b border-line group transition-colors duration-base"
-    >
+    <div className="relative w-full py-16 md:py-24 border-b border-line group transition-colors duration-base">
       <div className="max-w-container mx-auto px-5 md:px-10">
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:flex-row-reverse'}`}>
           
@@ -82,12 +65,11 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               {/* Media Preview or Skeleton Fallback */}
               {project.previewVideoUrl && !videoError ? (
                 <video
-                  ref={videoRef}
                   src={project.previewVideoUrl}
+                  autoPlay
                   muted
                   playsInline
                   loop
-                  autoPlay
                   onError={() => setVideoError(true)}
                   className="w-full h-full object-cover transition-transform duration-500 ease-cut group-hover:scale-[1.02]"
                 />
@@ -98,7 +80,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
                     [ PREVIEW READY — {project.title} ]
                   </div>
                   <div className="font-mono text-[10px] text-text-faint">
-                    DROP VIDEO TO public{project.previewVideoUrl || '/videos/filename.mp4'}
+                    CLICK TO PLAY FULL EDIT
                   </div>
                 </div>
               )}
@@ -120,11 +102,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               </div>
 
               {/* Bottom Accent Line Draw on Hover */}
-              <div
-                className={`absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-500 ease-cut ${
-                  isHovered ? 'w-full' : 'w-0'
-                }`}
-              />
+              <div className="absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-500 ease-cut w-0 group-hover:w-full" />
             </div>
           </div>
 

@@ -76,25 +76,15 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
 
       {/* 16:9 Video Player Container */}
       <div className="relative w-full max-w-[min(92vw,1400px)] aspect-[16/9] bg-black border border-line shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] overflow-hidden rounded-sm flex items-center justify-center">
-        {project.fullVideoUrl && project.fullVideoUrl.includes('youtube') ? (
-          <iframe
-            src={`${project.fullVideoUrl}?autoplay=1&rel=0`}
-            title={project.title}
-            className="w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <video
-            ref={videoRef}
-            src={videoSrc}
-            controls
-            autoPlay
-            playsInline
-            onError={handleVideoError}
-            className="w-full h-full object-contain bg-black"
-          />
-        )}
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          controls
+          autoPlay
+          playsInline
+          onError={handleVideoError}
+          className="w-full h-full object-contain bg-black"
+        />
       </div>
 
       {/* Caption & Metadata Beneath */}

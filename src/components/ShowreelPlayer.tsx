@@ -165,7 +165,7 @@ export const ShowreelPlayer: React.FC = () => {
                   [ 2025 EDITING SHOWREEL — KOCHI, KERALA ]
                 </div>
                 <div className="font-display text-2xl font-bold text-text mb-4">
-                  10-BIT S-LOG CUTS & BEAT SYNCS
+                  S-LOG COLOR WORKFLOWS & BEAT SYNCS
                 </div>
                 <button
                   onClick={togglePlay}
