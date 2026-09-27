@@ -6,7 +6,6 @@ import HeroSection from "../components/HeroSection.astro";
 import AboutSection from "../components/AboutSection.astro";
 import { SelectedWorkSection } from "../components/SelectedWorkSection";
 import { ShowreelPlayer } from "../components/ShowreelPlayer";
-import FrameGridSection from "../components/FrameGridSection.astro";
 import TimelineStrip from "../components/TimelineStrip.astro";
 import ContactFooter from "../components/ContactFooter.astro";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
@@ -27,15 +26,12 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
     <SelectedWorkSection client:visible />
 
     {/* Section 03 — Showreel Player (NLE Player & Chapter Markers) */}
-    <ShowreelPlayer client:visible />
+    <ShowreelPlayer client:load />
 
-    {/* Section 04 — Behind the Cut Frame Grid & RAW vs GRADED Slider */}
-    <FrameGridSection />
-
-    {/* Section 05 — Tools & Process 3-Track Timeline Strip */}
+    {/* Section 04 — Tools & Process 3-Track Timeline Strip */}
     <TimelineStrip />
 
-    {/* Section 06 — Contact & Footer */}
+    {/* Section 05 — Contact & Footer */}
     <ContactFooter />
   </main>
 </Layout>

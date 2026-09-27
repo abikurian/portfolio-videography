@@ -62,6 +62,14 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
+        ) : project.fullVideoUrl ? (
+          <video
+            src={project.fullVideoUrl}
+            controls
+            autoPlay
+            playsInline
+            className="w-full h-full object-cover"
+          />
         ) : (
           /* Placeholder Fallback player state if no external URL */
           <div className="w-full h-full skeleton-shimmer flex flex-col items-center justify-center p-8 text-center bg-bg-raised">
@@ -72,10 +80,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
               {project.title}
             </div>
             <div className="font-mono text-xs text-text-dim tracking-wider uppercase mb-1">
-              {project.clientOrType} · {project.runtime}
-            </div>
-            <div className="font-mono text-[11px] text-text-faint max-w-md">
-              Raw footage files pending upload to assets folder. Place `.mp4` files into `src/assets` to replace this skeleton player.
+              {project.style} · {project.runtime}
             </div>
           </div>
         )}

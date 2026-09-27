@@ -13,26 +13,7 @@ export interface Project {
   fullVideoUrl: string;
 }
 
-export interface ReelItem {
-  id: string;
-  index: string;
-  title: string;
-  style: string;
-  videoUrl: string;
-  runtime: string;
-}
 
-export interface FrameGridItem {
-  id: string;
-  title: string;
-  code: string;
-  category: 'timeline' | 'node-tree' | 'raw-vs-graded' | 'waveform' | 'setup';
-  aspectRatio: string;
-  imageUrl?: string;
-  rawImageUrl?: string;
-  gradedImageUrl?: string;
-  isBeforeAfter?: boolean;
-}
 
 export interface ShowreelChapter {
   timecode: string;
@@ -137,41 +118,6 @@ export const PORTFOLIO_DATA = {
     }
   ] as Project[],
 
-  shortFormReels: [
-    {
-      id: "reel-1",
-      index: "9:16-01",
-      title: "Event Energy Beat Sync",
-      style: "Kinetic Beat Cut",
-      videoUrl: "/videos/reel-1.mp4",
-      runtime: "00:15",
-    },
-    {
-      id: "reel-2",
-      index: "9:16-02",
-      title: "Automotive Speed Ramp",
-      style: "Vertical Cut",
-      videoUrl: "/videos/reel-2.mp4",
-      runtime: "00:20",
-    },
-    {
-      id: "reel-3",
-      index: "9:16-03",
-      title: "S-Log3 Skin Tone Transformation",
-      style: "Color Grade Breakdown",
-      videoUrl: "/videos/reel-3.mp4",
-      runtime: "00:18",
-    },
-    {
-      id: "reel-4",
-      index: "9:16-04",
-      title: "Ambient Sound & Pacing",
-      style: "Cinematic Reel",
-      videoUrl: "/videos/reel-4.mp4",
-      runtime: "00:30",
-    },
-  ] as ReelItem[],
-
   showreel: {
     title: "2025 EDITING SHOWREEL",
     showreelVideoUrl: "/videos/showreel-full.mp4",
@@ -185,57 +131,6 @@ export const PORTFOLIO_DATA = {
       { timecode: "01:20", seconds: 80, title: "05 — 10-Bit S-Log Color Grade", projectIndex: "05" },
     ] as ShowreelChapter[],
   },
-
-  frameGrid: [
-    {
-      id: "bts-1",
-      title: "NLE TIMELINE ASSEMBLY",
-      code: "A001_C014 — CUT POINTS & BEAT MAP",
-      category: "timeline",
-      aspectRatio: "16/9",
-      isBeforeAfter: false,
-    },
-    {
-      id: "bts-2",
-      title: "10-BIT S-LOG3 COLOR GRADE",
-      code: "REC.709 → KODAK 2383 PRINT FILM LOOK",
-      category: "raw-vs-graded",
-      aspectRatio: "16/9",
-      isBeforeAfter: true,
-    },
-    {
-      id: "bts-3",
-      title: "DAVINCI RESOLVE NODE TREE",
-      code: "EXPOSURE · BAL · SKIN · FILM GRAIN",
-      category: "node-tree",
-      aspectRatio: "4/3",
-      isBeforeAfter: false,
-    },
-    {
-      id: "bts-4",
-      title: "WAVEFORM & AUDIO TRANSIENTS",
-      code: "FL STUDIO DYNAMIC HIT MAP",
-      category: "waveform",
-      aspectRatio: "16/9",
-      isBeforeAfter: false,
-    },
-    {
-      id: "bts-5",
-      title: "SONY A7 IV SUITE SETUP",
-      code: "STUDIO MONITOR & NLE DECK",
-      category: "setup",
-      aspectRatio: "1/1",
-      isBeforeAfter: false,
-    },
-    {
-      id: "bts-6",
-      title: "KINETIC EVENT FRAME STACK",
-      code: "COMPOSITED MOTION GRAPHICS",
-      category: "timeline",
-      aspectRatio: "16/9",
-      isBeforeAfter: false,
-    },
-  ] as FrameGridItem[],
 
   toolsAndProcess: {
     tracks: [
@@ -268,14 +163,14 @@ export const PORTFOLIO_DATA = {
         ]
       }
     ],
-    toolsList: ["DaVinci Resolve", "Premiere Pro", "Sony a7 IV (S-Log)", "FL Studio"],
+    toolsList: ["DaVinci Resolve", "Premiere Pro", "FL Studio"],
   },
 
   contact: {
     headline: "Got footage? Let's cut it.",
     email: "abikurianvarghese@gmail.com",
     socials: [
-      { name: "INSTAGRAM", url: "https://instagram.com" },
+      { name: "INSTAGRAM", url: "https://instagram.com/abii.aep" },
       { name: "YOUTUBE", url: "https://youtube.com" },
       { name: "LINKEDIN", url: "https://linkedin.com" },
       { name: "BEHANCE", url: "https://behance.net" },

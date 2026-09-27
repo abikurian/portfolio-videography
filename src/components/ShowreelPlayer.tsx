@@ -148,6 +148,7 @@ export const ShowreelPlayer: React.FC = () => {
                 src={PORTFOLIO_DATA.showreel.showreelVideoUrl}
                 playsInline
                 muted={isMuted}
+                loop
                 onError={() => setVideoError(true)}
                 className="w-full h-full object-cover"
                 onTimeUpdate={() => {

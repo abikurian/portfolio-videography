@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { Project } from '../data/portfolioData';
 
 interface ProjectRowProps {
@@ -10,6 +10,18 @@ interface ProjectRowProps {
 export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenLightbox }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current && !videoError) {
+      if (isHovered) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isHovered, videoError]);
 
   return (
     <div
@@ -59,11 +71,12 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               {/* Media Preview or Skeleton Fallback */}
               {project.previewVideoUrl && !videoError ? (
                 <video
+                  ref={videoRef}
                   src={project.previewVideoUrl}
                   muted
                   playsInline
                   loop
-                  autoPlay={isHovered}
+                  autoPlay
                   onError={() => setVideoError(true)}
                   className="w-full h-full object-cover transition-transform duration-500 ease-cut group-hover:scale-[1.02]"
                 />
