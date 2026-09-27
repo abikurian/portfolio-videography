@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141418" />
+      <stop offset="100%" stop-color="#08080a" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e0e0e6" />
+    </linearGradient>
+    <linearGradient id="red-dot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark squircle base -->
+  <rect width="512" height="512" rx="112" fill="url(#bg-grad)" />
+
+  <!-- Subtle refined outline -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="6" />
+
+  <!-- Minimalist cinematic corner viewfinders -->
+  <path d="M 96 140 V 96 H 140" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 416 140 V 96 H 372" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 96 372 V 416 H 140" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 416 372 V 416 H 372" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Initials AK -->
+  <text x="246" y="324" 
+        font-family="system-ui, -apple-system, 'SF Pro Display', 'Inter', 'Montserrat', sans-serif" 
+        font-weight="900" 
+        font-size="210" 
+        letter-spacing="-10" 
+        text-anchor="middle" 
+        fill="url(#accent-grad)">AK</text>
+
+  <!-- Red REC indicator dot -->
+  <circle cx="372" cy="140" r="16" fill="url(#red-dot)" />
+</svg>
