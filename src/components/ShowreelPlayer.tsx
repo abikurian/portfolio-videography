@@ -129,7 +129,7 @@ export const ShowreelPlayer: React.FC = () => {
         {/* Section Header */}
         <div className="relative flex items-center mb-12">
           <div className="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
-            <span className="text-accent font-bold">03</span>
+            <span className="text-accent font-bold">04</span>
             <span>— SHOWREEL</span>
           </div>
           <div className="flex-grow h-[1px] bg-line"></div>
