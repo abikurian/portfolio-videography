@@ -123,7 +123,7 @@ export const ShowreelPlayer: React.FC = () => {
   const progressPercent = (currentTime / duration) * 100;
 
   return (
-    <section id="reel" className="relative w-full py-20 md:py-36 bg-bg border-b border-line">
+    <section id="showreel" className="relative w-full py-20 md:py-36 bg-bg border-b border-line">
       <div className="max-w-container mx-auto px-5 md:px-10">
         
         {/* Section Header */}

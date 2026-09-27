@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface HeaderNavProps {
   wordmarkName: string;
@@ -8,47 +8,90 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('work');
+  const isClickScrollingRef = useRef(false);
 
   const navItems = [
-    { id: 'work', label: 'WORK', href: '#work' },
-    { id: 'reel', label: 'SHOWREEL', href: '#reel' },
     { id: 'about', label: 'ABOUT', href: '#about' },
+    { id: 'work', label: 'WORK', href: '#work' },
+    { id: 'showreel', label: 'SHOWREEL', href: '#showreel' },
     { id: 'tools', label: 'TOOLS', href: '#tools' },
     { id: 'contact', label: 'CONTACT', href: '#contact' },
   ];
 
   useEffect(() => {
-    let animationFrameId: number;
-
-    const handleScroll = () => {
+    const handleScrollState = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 40);
 
-      // Active section detection
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPos = scrollY + 200;
+      // Default to first section when at top of page (e.g. Hero area)
+      if (scrollY < 120 && !isClickScrollingRef.current) {
+        setActiveSection('about');
+      }
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPos) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
+      // Bottom of page override to Contact
+      const isAtBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 80;
+      if (isAtBottom && !isClickScrollingRef.current) {
+        setActiveSection('contact');
       }
     };
 
-    const onScroll = () => {
-      animationFrameId = requestAnimationFrame(handleScroll);
+    window.addEventListener('scroll', handleScrollState, { passive: true });
+    handleScrollState();
+
+    // IntersectionObserver for dynamic section tracking
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-20% 0px -50% 0px',
+      threshold: 0,
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    handleScroll();
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      if (isClickScrollingRef.current) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) {
+        observer.observe(el);
+      }
+    });
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', handleScrollState);
+      observer.disconnect();
     };
   }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    itemId: string
+  ) => {
+    e.preventDefault();
+    setActiveSection(itemId);
+    isClickScrollingRef.current = true;
+
+    const el = document.getElementById(itemId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+
+    setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 800);
+  };
 
   return (
     <header
@@ -62,12 +105,17 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
         {/* Left: Wordmark */}
         <a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setActiveSection('about');
+          }}
           className="font-display font-extrabold text-sm md:text-base tracking-[0.02em] text-text hover:text-accent transition-colors duration-fast"
         >
           {wordmarkName}
         </a>
 
-        {/* Right Desktop Navigation Links (Clean sans-serif font) */}
+        {/* Right Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
@@ -75,6 +123,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
               <a
                 key={item.id}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.id)}
                 className={`group relative py-2 font-sans font-semibold text-xs tracking-widest transition-colors duration-fast uppercase ${
                   isActive ? 'text-text' : 'text-text-dim hover:text-text'
                 }`}
@@ -117,8 +166,10 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
               <a
                 key={item.id}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-bold font-display tracking-tight text-text hover:text-accent transition-colors"
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`text-2xl font-bold font-display tracking-tight transition-colors ${
+                  activeSection === item.id ? 'text-accent' : 'text-text hover:text-accent'
+                }`}
               >
                 {item.label}
               </a>
