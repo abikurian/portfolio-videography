@@ -19,6 +19,40 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
       <div class="flex-grow h-[1px] bg-line"></div>
     </div>
 
+    {/* Custom Editing Pipeline Grid (Stacks vertically on mobile grid-cols-1, side-by-side on larger screens md:grid-cols-3) */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {
+        PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
+          <div
+            key={track.name}
+            class="bg-bg-sunken border border-line p-5 flex flex-col space-y-3 transition-colors duration-fast hover:border-line-strong"
+          >
+            {/* Track Header */}
+            <div class="flex items-center space-x-2 border-b border-line pb-3 font-mono text-xs tracking-wider uppercase">
+              <span class="text-accent font-bold px-2 py-0.5 bg-accent/15 border border-accent/40">{track.name}</span>
+              <span class="text-text font-semibold">{track.label}</span>
+            </div>
+
+            {/* Track Blocks */}
+            <div class="flex flex-col space-y-2 pt-1 flex-grow">
+              {track.blocks.map((block) => (
+                <div
+                  key={block.title}
+                  class={`p-3 border text-center font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${
+                    block.highlight
+                      ? "bg-accent/15 border-accent text-accent font-semibold"
+                      : "bg-bg-raised border-line text-text-dim hover:border-line-strong hover:text-text"
+                  }`}
+                >
+                  {block.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
     {/* 3-Track NLE Timeline Block Diagram */}
     <div
       class="relative w-full bg-bg-sunken border border-line p-4 md:p-6 mb-12 overflow-x-auto"

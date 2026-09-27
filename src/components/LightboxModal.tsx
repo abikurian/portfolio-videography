@@ -54,28 +54,28 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
           onClose();
         }
       }}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-md animate-fadeIn overflow-y-auto"
     >
-      {/* Top Header Bar & Close Button */}
-      <div className="w-full max-w-[min(92vw,1400px)] flex items-center justify-between pb-4">
+      {/* Absolute Positioned Close Button for Touchscreen Accessibility */}
+      <button
+        onClick={onClose}
+        aria-label="Close Lightbox Modal"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-3 sm:p-3.5 font-mono text-xs text-text hover:text-accent tracking-widest uppercase border border-line hover:border-accent bg-bg-sunken/90 backdrop-blur-sm transition-colors duration-fast flex items-center space-x-2 cursor-pointer shadow-lg rounded-sm"
+      >
+        <span>CLOSE</span>
+        <span className="text-accent font-bold text-sm">✕</span>
+      </button>
+
+      {/* Top Header Bar */}
+      <div className="w-full max-w-[min(92vw,1400px)] flex items-center justify-between pb-4 pr-24 sm:pr-0">
         <div className="font-mono text-xs text-text-dim tracking-widest uppercase flex items-center space-x-2">
           <span className="text-accent font-bold">[{project.index}]</span>
-          <span>LIGHTBOX PLAYER — {project.title}</span>
+          <span className="truncate">LIGHTBOX PLAYER — {project.title}</span>
         </div>
-
-        {/* Top Right Close Button */}
-        <button
-          onClick={onClose}
-          aria-label="Close Lightbox Modal"
-          className="font-mono text-xs text-text hover:text-accent tracking-widest uppercase px-3 py-1.5 border border-line hover:border-accent bg-bg-sunken/80 transition-colors duration-fast flex items-center space-x-2 cursor-pointer"
-        >
-          <span>CLOSE</span>
-          <span className="text-accent font-bold">✕</span>
-        </button>
       </div>
 
-      {/* 16:9 Video Player Container */}
-      <div className="relative w-full max-w-[min(92vw,1400px)] aspect-[16/9] bg-black border border-line shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] overflow-hidden rounded-sm flex items-center justify-center">
+      {/* 16:9 Video Player Container & Video Element */}
+      <div className="relative w-full max-w-[min(92vw,1400px)] aspect-[16/9] max-h-[75vh] sm:max-h-[80vh] bg-black border border-line shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] overflow-hidden rounded-sm flex items-center justify-center">
         <video
           ref={videoRef}
           src={videoSrc}
@@ -83,7 +83,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
           autoPlay
           playsInline
           onError={handleVideoError}
-          className="w-full h-full object-contain bg-black"
+          className="w-full h-auto max-h-screen object-contain bg-black"
         />
       </div>
 
