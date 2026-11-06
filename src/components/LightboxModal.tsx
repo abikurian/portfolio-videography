@@ -59,7 +59,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
       {/* Absolute Positioned Close Button for Touchscreen Accessibility */}
       <button
         onClick={onClose}
-        aria-label="Close Lightbox Modal"
+        aria-label="Close video player"
         className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-3 sm:p-3.5 font-mono text-xs text-text hover:text-accent tracking-widest uppercase border border-line hover:border-accent bg-bg-sunken/90 backdrop-blur-sm transition-colors duration-fast flex items-center space-x-2 cursor-pointer shadow-lg rounded-sm"
       >
         <span>CLOSE</span>
@@ -70,7 +70,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
       <div className="w-full max-w-[min(92vw,1400px)] flex items-center justify-between pb-4 pr-24 sm:pr-0">
         <div className="font-mono text-xs text-text-dim tracking-widest uppercase flex items-center space-x-2">
           <span className="text-accent font-bold">[{project.index}]</span>
-          <span className="truncate">LIGHTBOX PLAYER — {project.title}</span>
+          <span className="truncate">{project.title}</span>
         </div>
       </div>
 

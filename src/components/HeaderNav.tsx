@@ -96,9 +96,9 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-base ease-cut ${
+      className={`fixed top-0 left-0 right-0 z-50 h-16 transition-colors duration-fast ${
         isScrolled
-          ? 'bg-bg-sunken/92 backdrop-blur-md border-b border-line shadow-2xl'
+          ? 'bg-bg border-b border-line'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -125,17 +125,15 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`group relative min-h-[44px] flex items-center py-2 px-1 font-sans font-semibold text-xs tracking-widest transition-colors duration-fast uppercase ${
+                className={`group relative min-h-[44px] inline-flex items-center py-2 px-1 font-mono text-xs uppercase tracking-widest transition-colors duration-fast ${
                   isActive ? 'text-text' : 'text-text-dim hover:text-text'
+                } before:absolute before:inset-x-0 before:bottom-0 before:h-[2px] before:bg-accent before:origin-left before:transition-transform before:duration-base motion-reduce:before:transition-none ${
+                  isActive
+                    ? 'before:scale-x-100'
+                    : 'before:scale-x-0 hover:before:scale-x-100 focus-visible:before:scale-x-100'
                 }`}
               >
                 {item.label}
-                {/* Active / Hover 1px Accent Underline */}
-                <span
-                  className={`absolute bottom-0 left-0 h-[1px] bg-accent transition-all duration-fast ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
               </a>
             );
           })}
@@ -145,7 +143,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle Navigation Menu"
-          className="lg:hidden p-2 text-text hover:text-accent focus:outline-none"
+          className="lg:hidden p-2 text-text hover:text-accent focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center"
         >
           {mobileMenuOpen ? (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -161,20 +159,23 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
 
       {/* Mobile Menu Sheet */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 bg-bg-sunken z-40 px-6 py-10 flex flex-col justify-between border-t border-line">
+        <div className="lg:hidden fixed inset-0 top-16 bg-bg z-40 px-6 py-10 flex flex-col justify-between border-t border-line">
           <div className="flex flex-col space-y-6">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`min-h-[44px] flex items-center text-2xl font-bold font-display tracking-tight transition-colors ${
-                  activeSection === item.id ? 'text-accent' : 'text-text hover:text-accent'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`min-h-[44px] flex items-center text-2xl font-bold font-display tracking-tight transition-colors ${
+                    isActive ? 'text-accent' : 'text-text hover:text-accent'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}

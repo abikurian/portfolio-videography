@@ -127,7 +127,7 @@ export const ShowreelPlayer: React.FC = () => {
       <div className="max-w-container mx-auto px-5 md:px-10">
         
         {/* Section Header */}
-        <div className="relative flex items-center mb-12">
+        <div className="relative flex items-center mb-12 md:mb-16">
           <div className="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
             <span className="text-text font-bold">SHOWREEL</span>
           </div>

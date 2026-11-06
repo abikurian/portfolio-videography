@@ -48,7 +48,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
             <div className="pt-2">
               <button
                 onClick={() => onOpenLightbox(project)}
-                className="inline-flex items-center min-h-[44px] space-x-2 px-5 py-2.5 border border-line hover:border-accent text-text hover:text-accent font-mono text-xs uppercase tracking-widest transition-colors duration-fast bg-bg-raised hover:bg-bg-sunken group/btn cursor-pointer"
+                className="inline-flex items-center min-h-[44px] space-x-2 px-5 py-2.5 bg-transparent border border-line hover:border-accent text-text hover:text-accent font-mono text-xs uppercase tracking-widest transition-colors duration-fast group/btn cursor-pointer"
               >
                 <span>PLAY FULL EDIT</span>
                 <span className="text-accent group-hover/btn:translate-x-1 transition-transform">▸</span>
@@ -77,7 +77,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
                 /* Fallback Skeleton State with Shimmer Animation */
                 <div className="w-full h-full skeleton-shimmer relative flex flex-col items-center justify-center p-6 text-center">
                   <div className="font-mono text-xs text-text-dim tracking-widest uppercase mb-2">
-                    [ PREVIEW READY — {project.title} ]
+                    [ PREVIEW — {project.title} ]
                   </div>
                   <div className="font-mono text-[10px] text-text-faint">
                     CLICK TO PLAY FULL EDIT
