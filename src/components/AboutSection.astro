@@ -8,8 +8,7 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
     {/* Section Timeline Marker Header */}
     <div class="relative flex items-center mb-16 md:mb-24">
       <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
-        <span class="text-accent font-bold">01</span>
-        <span>— ABOUT</span>
+        <span class="text-text font-bold">ABOUT</span>
       </div>
       <div class="flex-grow h-[1px] bg-line"></div>
     </div>
@@ -39,14 +38,13 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
           {PORTFOLIO_DATA.about.bio}
         </p>
 
-        {/* 4-Column Hairline-Separated Facts Row */}
-        <div class="pt-8 border-t border-line grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-xs">
-          {PORTFOLIO_DATA.about.facts.map((fact) => (
-            <div class="flex flex-col space-y-1">
-              <span class="text-text-faint tracking-widest text-[10px] uppercase">{fact.label}</span>
-              <span class="text-text font-medium tracking-wider">{fact.value}</span>
-            </div>
-          ))}
+        {/* Plain Text Details Row */}
+        <div class="pt-8 border-t border-line flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs text-text-dim">
+          <span><span class="text-text-faint uppercase tracking-wider">Experience:</span> 4+ years</span>
+          <span class="text-line-strong">/</span>
+          <span><span class="text-text-faint uppercase tracking-wider">Location:</span> Kochi, Kerala</span>
+          <span class="text-line-strong">/</span>
+          <span><span class="text-text-faint uppercase tracking-wider">Status:</span> Open for freelance & remote</span>
         </div>
       </div>
     </div>

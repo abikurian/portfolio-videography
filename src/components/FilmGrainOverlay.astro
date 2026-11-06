@@ -2,7 +2,7 @@
 // FilmGrainOverlay.astro — Monochromatic noise overlay for tactile film feel
 ---
 
-<div class="fixed inset-0 pointer-events-none z-[999] opacity-[0.045] mix-blend-overlay">
+<div class="film-grain-overlay fixed inset-0 pointer-events-none z-[999] opacity-[0.045] mix-blend-overlay">
   <svg class="w-full h-full">
     <filter id="film-grain">
       <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"></feTurbulence>

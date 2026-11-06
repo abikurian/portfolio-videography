@@ -125,7 +125,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`group relative py-2 font-sans font-semibold text-xs tracking-widest transition-colors duration-fast uppercase ${
+                className={`group relative min-h-[44px] flex items-center py-2 px-1 font-sans font-semibold text-xs tracking-widest transition-colors duration-fast uppercase ${
                   isActive ? 'text-text' : 'text-text-dim hover:text-text'
                 }`}
               >
@@ -168,7 +168,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ wordmarkName }) => {
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`text-2xl font-bold font-display tracking-tight transition-colors ${
+                className={`min-h-[44px] flex items-center text-2xl font-bold font-display tracking-tight transition-colors ${
                   activeSection === item.id ? 'text-accent' : 'text-text hover:text-accent'
                 }`}
               >

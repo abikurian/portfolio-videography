@@ -10,8 +10,7 @@ import { ToastNotification } from './ToastNotification';
     {/* Section Timeline Marker Header */}
     <div class="relative flex items-center mb-12">
       <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg-raised z-10 flex items-center space-x-2">
-        <span class="text-accent font-bold">06</span>
-        <span>— CONTACT</span>
+        <span class="text-text font-bold">CONTACT</span>
       </div>
       <div class="flex-grow h-[1px] bg-line"></div>
     </div>
@@ -29,9 +28,6 @@ import { ToastNotification } from './ToastNotification';
       {/* Copy-to-Clipboard Email Component */}
       <div class="pt-4">
         <ToastNotification client:load email={PORTFOLIO_DATA.contact.email} />
-        <div class="font-mono text-[11px] text-text-faint tracking-widest uppercase mt-2">
-          [ CLICK EMAIL TO COPY TO CLIPBOARD ]
-        </div>
       </div>
     </div>
 
@@ -44,7 +40,7 @@ import { ToastNotification } from './ToastNotification';
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-text-dim hover:text-accent transition-colors duration-fast"
+            class="min-h-[44px] min-w-[44px] inline-flex items-center text-text-dim hover:text-accent transition-colors duration-fast"
           >
             {social.name} ↗
           </a>
@@ -71,7 +67,7 @@ import { ToastNotification } from './ToastNotification';
 
       <a
         href="#"
-        class="hover:text-accent transition-colors uppercase tracking-wider"
+        class="min-h-[44px] inline-flex items-center hover:text-accent transition-colors uppercase tracking-wider"
       >
         Back to top ↑
       </a>

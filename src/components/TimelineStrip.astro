@@ -13,100 +13,70 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
       <div
         class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2"
       >
-        <span class="text-accent font-bold">05</span>
-        <span>— TOOLS & PROCESS</span>
+        <span class="text-text font-bold">TOOLS & PROCESS</span>
       </div>
       <div class="flex-grow h-[1px] bg-line"></div>
     </div>
 
-    {/* Custom Editing Pipeline Grid (Stacks vertically on mobile grid-cols-1, side-by-side on larger screens md:grid-cols-3) */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {
-        PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
-          <div
-            key={track.name}
-            class="bg-bg-sunken border border-line p-5 flex flex-col space-y-3 transition-colors duration-fast hover:border-line-strong"
-          >
-            {/* Track Header */}
-            <div class="flex items-center space-x-2 border-b border-line pb-3 font-mono text-xs tracking-wider uppercase">
-              <span class="text-accent font-bold px-2 py-0.5 bg-accent/15 border border-accent/40">{track.name}</span>
-              <span class="text-text font-semibold">{track.label}</span>
-            </div>
-
-            {/* Track Blocks */}
-            <div class="flex flex-col space-y-2 pt-1 flex-grow">
-              {track.blocks.map((block) => (
-                <div
-                  key={block.title}
-                  class={`p-3 border text-center font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${
-                    block.highlight
-                      ? "bg-accent/15 border-accent text-accent font-semibold"
-                      : "bg-bg-raised border-line text-text-dim hover:border-line-strong hover:text-text"
-                  }`}
-                >
-                  {block.title}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    {/* 3-Track NLE Timeline Block Diagram */}
-    <div
-      class="relative w-full bg-bg-sunken border border-line p-4 md:p-6 mb-12 overflow-x-auto"
-    >
-      {/* Playhead Marker Overlay (Positioned over Fine Cut) */}
+    {/* 3-Track NLE Timeline Block Diagram Container with Mobile Scroll Fade */}
+    <div class="relative w-full mb-12">
       <div
-        class="absolute top-0 bottom-0 left-[58%] w-[2px] bg-accent z-20 pointer-events-none hidden sm:block"
+        class="relative w-full bg-bg-sunken border border-line p-4 md:p-6 overflow-x-auto"
       >
+        {/* Playhead Marker Overlay (Positioned over Fine Cut) */}
         <div
-          class="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[8px] border-t-accent"
+          class="absolute top-0 bottom-0 left-[58%] w-[2px] bg-accent z-20 pointer-events-none hidden sm:block"
         >
+          <div
+            class="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[8px] border-t-accent"
+          >
+          </div>
+        </div>
+
+        <div class="flex flex-col space-y-3 min-w-[640px]">
+          {
+            PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
+              <div key={track.name} class="flex items-center space-x-3">
+                {/* Track Name Header */}
+                <div class="w-16 flex flex-col font-mono text-[10px] text-text-faint tracking-wider uppercase shrink-0">
+                  <span class="text-accent font-bold">{track.name}</span>
+                  <span>{track.label}</span>
+                </div>
+
+                {/* Track Blocks */}
+                <div class="flex-grow flex items-center space-x-1">
+                  {track.blocks.map((block) => (
+                    <div
+                      key={block.title}
+                      class={`h-10 border text-center flex items-center justify-center px-2 font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${block.width} ${
+                        block.highlight
+                          ? "bg-accent/15 border-accent text-accent font-semibold"
+                          : "bg-bg-raised border-line text-text-dim hover:border-line-strong"
+                      }`}
+                    >
+                      {block.title}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        {/* Timeline Timecode Ruler Footer */}
+        <div
+          class="mt-4 pt-3 border-t border-line flex items-center justify-between font-mono text-[10px] text-text-faint tracking-widest uppercase"
+        >
+          <span>00:00:00:00</span>
+          <span>00:00:45:00</span>
+          <span class="text-accent font-medium">00:01:30:00 [PLAYHEAD]</span>
+          <span>00:02:15:00</span>
+          <span>00:02:30:00</span>
         </div>
       </div>
 
-      <div class="flex flex-col space-y-3 min-w-[640px]">
-        {
-          PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
-            <div key={track.name} class="flex items-center space-x-3">
-              {/* Track Name Header */}
-              <div class="w-16 flex flex-col font-mono text-[10px] text-text-faint tracking-wider uppercase shrink-0">
-                <span class="text-accent font-bold">{track.name}</span>
-                <span>{track.label}</span>
-              </div>
-
-              {/* Track Blocks */}
-              <div class="flex-grow flex items-center space-x-1">
-                {track.blocks.map((block) => (
-                  <div
-                    key={block.title}
-                    class={`h-10 border text-center flex items-center justify-center px-2 font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${block.width} ${
-                      block.highlight
-                        ? "bg-accent/15 border-accent text-accent font-semibold"
-                        : "bg-bg-raised border-line text-text-dim hover:border-line-strong"
-                    }`}
-                  >
-                    {block.title}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      {/* Timeline Timecode Ruler Footer */}
-      <div
-        class="mt-4 pt-3 border-t border-line flex items-center justify-between font-mono text-[10px] text-text-faint tracking-widest uppercase"
-      >
-        <span>00:00:00:00</span>
-        <span>00:00:45:00</span>
-        <span class="text-accent font-medium">00:01:30:00 [PLAYHEAD]</span>
-        <span>00:02:15:00</span>
-        <span>00:02:30:00</span>
-      </div>
+      {/* Right Edge Fade Affordance on mobile to indicate horizontal scrollability */}
+      <div class="absolute top-0 right-0 bottom-0 w-8 pointer-events-none bg-gradient-to-l from-bg-sunken to-transparent sm:hidden border-r border-line"></div>
     </div>
 
     {/* Tools & Gear Plain Text Strip */}

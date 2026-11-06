@@ -17,7 +17,7 @@ export default {
         text: {
           DEFAULT: '#EDE9E1',      // Primary warm off-white
           dim: '#A39E94',          // Secondary text, captions
-          faint: '#6B675F',        // Timecodes, metadata, disabled
+          faint: '#87827A',        // Timecodes, metadata, disabled (WCAG AA 4.56:1 compliant)
         },
         accent: {
           DEFAULT: '#E8552B',      // Playhead orange

@@ -16,7 +16,7 @@
     --line-strong: #3D3A35;
     --text: #EDE9E1;
     --text-dim: #A39E94;
-    --text-faint: #6B675F;
+    --text-faint: #87827A;
     --accent: #E8552B;
     --accent-soft: rgba(232, 85, 43, 0.15);
     --ok: #7FB069;
@@ -128,4 +128,30 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton-shimmer::after {
+    animation: none !important;
+    display: none !important;
+  }
+
+  /* Disable film grain filter animation/rendering */
+  .film-grain-overlay {
+    display: none !important;
+  }
 }
