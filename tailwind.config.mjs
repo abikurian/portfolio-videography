@@ -30,6 +30,7 @@ export default {
         display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
         serif: ['Instrument Serif', 'Georgia', 'serif'],
         mono: ['IBM Plex Mono', 'ui-monospace', 'Menlo', 'monospace'],
+        ui: ['Poppins', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         display: ['clamp(3.5rem, 9vw, 8.25rem)', { lineHeight: '0.92', letterSpacing: '-0.04em', fontWeight: '800' }],

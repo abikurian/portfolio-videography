@@ -60,16 +60,15 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
       <button
         onClick={onClose}
         aria-label="Close video player"
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-3 sm:p-3.5 font-mono text-xs text-text hover:text-accent tracking-widest uppercase border border-line hover:border-accent bg-bg-sunken/90 backdrop-blur-sm transition-colors duration-fast flex items-center space-x-2 cursor-pointer shadow-lg rounded-sm"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-3 sm:p-3.5 font-ui text-xs text-text hover:text-accent tracking-widest uppercase border border-line hover:border-accent bg-bg-sunken/90 backdrop-blur-sm transition-colors duration-fast flex items-center space-x-2 cursor-pointer shadow-lg rounded-sm"
       >
         <span>CLOSE</span>
-        <span className="text-accent font-bold text-sm">✕</span>
+        <span className="text-accent font-bold text-sm font-ui">✕</span>
       </button>
 
       {/* Top Header Bar */}
       <div className="w-full max-w-[min(92vw,1400px)] flex items-center justify-between pb-4 pr-24 sm:pr-0">
-        <div className="font-mono text-xs text-text-dim tracking-widest uppercase flex items-center space-x-2">
-          <span className="text-accent font-bold">[{project.index}]</span>
+        <div className="font-ui text-xs text-text-dim tracking-widest uppercase flex items-center space-x-2">
           <span className="truncate">{project.title}</span>
         </div>
       </div>
@@ -90,15 +89,15 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ project, onClose }
       {/* Caption & Metadata Beneath */}
       <div className="w-full max-w-[min(92vw,1400px)] pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-line mt-4">
         <div>
-          <h3 id="modal-title" className="font-display text-h3 text-text font-bold tracking-tight">
+          <h3 id="modal-title" className="font-ui text-h3 text-text font-bold tracking-tight">
             {project.title}
           </h3>
-          <p className="font-sans text-xs text-text-dim mt-1 max-w-xl">
+          <p className="font-ui text-xs text-text-dim mt-1 max-w-xl">
             {project.oneLiner}
           </p>
         </div>
 
-        <div className="font-mono text-[11px] text-text-faint tracking-wider uppercase flex flex-wrap items-center gap-3">
+        <div className="font-ui text-[11px] text-text-faint tracking-wider uppercase flex flex-wrap items-center gap-3">
           <span>ROLE: <span className="text-text-dim">{project.role}</span></span>
           <span>·</span>
           <span>TOOLS: <span className="text-text-dim">{project.tools.join(", ")}</span></span>
