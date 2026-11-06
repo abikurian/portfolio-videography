@@ -11,7 +11,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
   const [videoError, setVideoError] = useState(false);
 
   return (
-    <div className="relative w-full py-16 md:py-24 border-b border-line group transition-colors duration-base">
+    <div className="relative w-full py-12 md:py-16 border-b border-line group transition-colors duration-base">
       <div className="max-w-container mx-auto px-5 md:px-10">
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:flex-row-reverse'}`}>
           
@@ -20,32 +20,32 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
             {/* Project Title with Right Shift on Hover */}
             <h3
               onClick={() => onOpenLightbox(project)}
-              className="font-ui text-h1 font-bold text-text tracking-tighter cursor-pointer transition-transform duration-base ease-cut transform group-hover:translate-x-2 group-hover:text-accent"
+              className="font-display text-h1 font-bold text-text tracking-tighter cursor-pointer transition-transform duration-base ease-cut transform group-hover:translate-x-2 group-hover:text-accent"
             >
               {project.title}
             </h3>
 
-            <p className="font-ui text-body text-text-dim max-w-prose leading-relaxed">
+            <p className="font-sans text-body text-text-dim max-w-prose leading-relaxed">
               {project.oneLiner}
             </p>
 
             {/* Metadata Chips: STYLE / TOOLS / RUNTIME */}
-            <div className="pt-2 flex flex-wrap items-center gap-2 font-ui text-[11px] text-text-faint tracking-wider uppercase">
-              <span className="text-text font-medium">STYLE: {project.style}</span>
+            <div className="pt-2 flex flex-wrap items-center gap-2 font-sans text-[11px] text-text-faint tracking-wider uppercase font-medium">
+              <span className="text-text font-semibold">STYLE: {project.style}</span>
               <span>·</span>
               <span>TOOLS: {project.tools.join(" / ")}</span>
               <span>·</span>
-              <span className="text-accent">RUNTIME: {project.runtime}</span>
+              <span className="text-accent font-semibold">RUNTIME: {project.runtime}</span>
             </div>
 
             {/* Play Button in text column */}
             <div className="pt-2">
               <button
                 onClick={() => onOpenLightbox(project)}
-                className="inline-flex items-center min-h-[44px] space-x-2 px-5 py-2.5 bg-transparent border border-line hover:border-accent text-text hover:text-accent font-ui text-xs uppercase tracking-widest transition-colors duration-fast group/btn cursor-pointer"
+                className="inline-flex items-center min-h-[44px] space-x-2 px-5 py-2.5 bg-transparent border border-line hover:border-accent text-text hover:text-accent font-sans text-xs uppercase tracking-widest font-semibold transition-colors duration-fast group/btn cursor-pointer"
               >
                 <span>PLAY FULL EDIT</span>
-                <span className="text-accent group-hover/btn:translate-x-1 transition-transform font-ui">▸</span>
+                <span className="text-accent group-hover/btn:translate-x-1 transition-transform font-sans">▸</span>
               </button>
             </div>
           </div>
@@ -70,10 +70,10 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               ) : (
                 /* Fallback Skeleton State with Shimmer Animation */
                 <div className="w-full h-full skeleton-shimmer relative flex flex-col items-center justify-center p-6 text-center">
-                  <div className="font-ui text-xs text-text-dim tracking-widest uppercase mb-2">
+                  <div className="font-sans text-xs text-text-dim tracking-widest uppercase mb-2 font-medium">
                     [ PREVIEW — {project.title} ]
                   </div>
-                  <div className="font-ui text-[10px] text-text-faint">
+                  <div className="font-sans text-[10px] text-text-faint uppercase tracking-wider">
                     CLICK TO PLAY FULL EDIT
                   </div>
                 </div>
@@ -83,15 +83,15 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               <div className="absolute inset-0 scrim-bottom opacity-60 pointer-events-none"></div>
 
               {/* Bottom-Right Duration Label */}
-              <div className="absolute bottom-3 right-3 font-ui text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line">
+              <div className="absolute bottom-3 right-3 font-sans text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line font-medium">
                 {project.runtime}
               </div>
 
               {/* Hover Minimal Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-fast bg-bg-sunken/50">
-                <div className="px-4 py-2 bg-transparent border border-line hover:border-accent text-text hover:text-accent font-ui text-xs uppercase tracking-widest flex items-center space-x-2 transition-colors">
+                <div className="px-4 py-2 bg-transparent border border-line hover:border-accent text-text hover:text-accent font-sans text-xs uppercase tracking-widest font-semibold flex items-center space-x-2 transition-colors">
                   <span>PLAY FULL EDIT</span>
-                  <span className="text-accent font-ui">▸</span>
+                  <span className="text-accent font-sans">▸</span>
                 </div>
               </div>
 
