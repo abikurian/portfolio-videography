@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@1&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +24,6 @@
     /* Typography */
     --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Instrument Serif", Georgia, serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 
     /* Motion */
     --ease-cut: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -62,9 +61,9 @@
   }
 }
 
-/* Monospace Utilities & Metadata */
+/* Monospace Utilities & Metadata - now using Archivo with tabular-nums for numeric stability */
 .font-mono-meta {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: clamp(0.6875rem, 1vw, 0.75rem);
   line-height: 1.4;
   letter-spacing: 0.06em;

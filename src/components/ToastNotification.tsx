@@ -26,7 +26,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = ({ email }) =
 
       {/* Floating Mono Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-6 left-6 z-50 bg-bg-raised border border-line px-4 py-2 font-mono text-xs text-accent uppercase tracking-widest shadow-2xl flex items-center space-x-2 animate-fadeIn">
+        <div className="fixed bottom-6 left-6 z-50 bg-bg-raised border border-line px-4 py-2 font-sans text-xs text-accent uppercase tracking-widest shadow-2xl flex items-center space-x-2 animate-fadeIn font-variant-numeric-tabular">
           <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
           <span>COPIED ✓</span>
         </div>

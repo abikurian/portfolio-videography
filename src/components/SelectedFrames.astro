@@ -29,7 +29,7 @@ const frames = [
     
     {/* Section Timeline Marker Header */}
     <div class="relative flex items-center mb-10 md:mb-14">
-      <div class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+      <div class="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
         <span class="text-text font-bold">SELECTED FRAMES</span>
       </div>
       <div class="flex-grow h-[1px] bg-line"></div>
@@ -54,12 +54,12 @@ const frames = [
           <div class="absolute inset-0 scrim-bottom opacity-60 pointer-events-none"></div>
 
           {/* Top-Right Index Label */}
-          <div class="absolute top-3 right-3 font-mono text-[10px] text-text-faint bg-bg-sunken/80 px-2 py-0.5 border border-line">
+          <div class="absolute top-3 right-3 font-sans text-[10px] text-text-faint bg-bg-sunken/80 px-2 py-0.5 border border-line font-variant-numeric-tabular">
             [ STILL 0{index + 1} ]
           </div>
 
           {/* Bottom Info Bar */}
-          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[11px] text-text-dim group-hover:text-text transition-colors">
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between font-sans text-[11px] text-text-dim group-hover:text-text transition-colors font-variant-numeric-tabular">
             <span class="truncate pr-2">{frame.title}</span>
             <span class="text-accent font-medium shrink-0">{frame.tag}</span>
           </div>

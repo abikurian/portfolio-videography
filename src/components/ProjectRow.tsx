@@ -30,7 +30,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
             </p>
 
             {/* Metadata Chips: STYLE / TOOLS / RUNTIME */}
-            <div className="pt-2 flex flex-wrap items-center gap-2 font-sans text-[11px] text-text-faint tracking-wider uppercase font-medium">
+            <div className="pt-2 flex flex-wrap items-center gap-2 font-sans text-[11px] text-text-faint tracking-wider uppercase font-medium font-variant-numeric-tabular">
               <span className="text-text font-semibold">STYLE: {project.style}</span>
               <span>·</span>
               <span>TOOLS: {project.tools.join(" / ")}</span>
@@ -83,7 +83,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               <div className="absolute inset-0 scrim-bottom opacity-60 pointer-events-none"></div>
 
               {/* Bottom-Right Duration Label */}
-              <div className="absolute bottom-3 right-3 font-sans text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line font-medium">
+              <div className="absolute bottom-3 right-3 font-sans text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line font-medium font-variant-numeric-tabular">
                 {project.runtime}
               </div>
 

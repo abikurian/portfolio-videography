@@ -11,7 +11,7 @@ export const SelectedWorkSection: React.FC = () => {
       {/* Section Timeline Marker Header */}
       <div className="max-w-container mx-auto px-5 md:px-10 mb-8 md:mb-12">
         <div className="relative flex items-center">
-          <div className="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+          <div className="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
             <span className="text-text font-bold">SELECTED WORK</span>
           </div>
           <div className="flex-grow h-[1px] bg-line"></div>

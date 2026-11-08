@@ -11,7 +11,7 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
     {/* Section Timeline Marker Header */}
     <div class="relative flex items-center mb-10 md:mb-14">
       <div
-        class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2"
+        class="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2"
       >
         <span class="text-text font-bold">TOOLS & PROCESS</span>
       </div>
@@ -38,7 +38,7 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
             PORTFOLIO_DATA.toolsAndProcess.tracks.map((track) => (
               <div key={track.name} class="flex items-center space-x-3">
                 {/* Track Name Header */}
-                <div class="w-16 flex flex-col font-mono text-[10px] text-text-faint tracking-wider uppercase shrink-0">
+                <div class="w-16 flex flex-col font-sans text-[10px] text-text-faint tracking-wider uppercase shrink-0 font-variant-numeric-tabular">
                   <span class="text-accent font-bold">{track.name}</span>
                   <span>{track.label}</span>
                 </div>
@@ -48,11 +48,11 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
                   {track.blocks.map((block) => (
                     <div
                       key={block.title}
-                      class={`h-10 border text-center flex items-center justify-center px-2 font-mono text-[11px] uppercase tracking-wider transition-colors duration-fast ${block.width} ${
+                      class={`h-10 border text-center flex items-center justify-center px-2 font-sans text-[11px] uppercase tracking-wider transition-colors duration-fast ${block.width} ${
                         block.highlight
                           ? "bg-accent/15 border-accent text-accent font-semibold"
                           : "bg-bg-raised border-line text-text-dim hover:border-line-strong"
-                      }`}
+                      }`} font-variant-numeric-tabular
                     >
                       {block.title}
                     </div>
@@ -65,7 +65,7 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
 
         {/* Timeline Timecode Ruler Footer */}
         <div
-          class="mt-4 pt-3 border-t border-line flex items-center justify-between font-mono text-[10px] text-text-faint tracking-widest uppercase"
+          class="mt-4 pt-3 border-t border-line flex items-center justify-between font-sans text-[10px] text-text-faint tracking-widest uppercase font-variant-numeric-tabular"
         >
           <span>00:00:00:00</span>
           <span>00:00:45:00</span>
@@ -83,12 +83,12 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
     <div
       class="pt-6 border-t border-line flex flex-col md:flex-row md:items-center justify-between gap-4"
     >
-      <div class="font-mono text-xs text-text-faint uppercase tracking-widest">
+      <div class="font-sans text-xs text-text-faint uppercase tracking-widest font-variant-numeric-tabular">
         PRIMARY SUITE & GEAR:
       </div>
 
       <div
-        class="font-mono text-sm md:text-base text-text font-medium tracking-wider flex flex-wrap gap-2"
+        class="font-sans text-sm md:text-base text-text font-medium tracking-wider flex flex-wrap gap-2 font-variant-numeric-tabular"
       >
         {
           PORTFOLIO_DATA.toolsAndProcess.toolsList.map((tool, index) => (

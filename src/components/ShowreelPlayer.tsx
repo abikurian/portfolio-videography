@@ -128,7 +128,7 @@ export const ShowreelPlayer: React.FC = () => {
         
         {/* Section Header */}
         <div className="relative flex items-center mb-10 md:mb-14">
-          <div className="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
+          <div className="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg z-10 flex items-center space-x-2">
             <span className="text-text font-bold">SHOWREEL</span>
           </div>
           <div className="flex-grow h-[1px] bg-line"></div>
@@ -160,7 +160,7 @@ export const ShowreelPlayer: React.FC = () => {
             ) : (
               /* Fallback NLE Player Deck UI */
               <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-bg-raised/90">
-                <div className="font-mono text-xs text-accent tracking-widest uppercase mb-2">
+                <div className="font-sans text-xs text-accent tracking-widest uppercase mb-2 font-variant-numeric-tabular">
                   [ 2025 EDITING SHOWREEL — KOCHI, KERALA ]
                 </div>
                 <div className="font-display text-2xl font-bold text-text mb-4">
@@ -168,7 +168,7 @@ export const ShowreelPlayer: React.FC = () => {
                 </div>
                 <button
                   onClick={togglePlay}
-                  className="px-6 py-3 bg-transparent border border-line text-text font-mono text-xs uppercase tracking-wider hover:border-accent hover:text-accent transition-colors"
+                  className="px-6 py-3 bg-transparent border border-line text-text font-sans text-xs uppercase tracking-wider hover:border-accent hover:text-accent transition-colors"
                 >
                   {isPlaying ? 'PAUSE EDIT ❚❚' : 'PLAY SHOWREEL ▸'}
                 </button>
@@ -179,7 +179,7 @@ export const ShowreelPlayer: React.FC = () => {
             <button
               onClick={togglePlay}
               aria-label={isPlaying ? 'Pause' : 'Play'}
-              className="absolute top-4 left-4 w-10 h-10 bg-bg-sunken/80 border border-line text-text hover:border-accent flex items-center justify-center font-mono text-xs transition-colors z-20"
+              className="absolute top-4 left-4 w-10 h-10 bg-bg-sunken/80 border border-line text-text hover:border-accent flex items-center justify-center font-sans text-xs transition-colors z-20"
             >
               {isPlaying ? '❚❚' : '▸'}
             </button>
@@ -217,7 +217,7 @@ export const ShowreelPlayer: React.FC = () => {
                   >
                     {/* Chapter Tooltip */}
                     {hoveredChapter === chapter.title && (
-                      <div className="absolute bottom-5 -translate-x-1/2 left-1/2 whitespace-nowrap bg-bg-sunken px-2 py-1 text-[10px] font-mono text-text border border-line z-20">
+                      <div className="absolute bottom-5 -translate-x-1/2 left-1/2 whitespace-nowrap bg-bg-sunken px-2 py-1 text-[10px] font-sans text-text border border-line z-20 font-variant-numeric-tabular">
                         {chapter.title} ({chapter.timecode})
                       </div>
                     )}
@@ -227,7 +227,7 @@ export const ShowreelPlayer: React.FC = () => {
             </div>
 
             {/* Controls Row */}
-            <div className="flex items-center justify-between font-mono text-[11px] text-text-dim pt-1">
+            <div className="flex items-center justify-between font-sans text-[11px] text-text-dim pt-1 font-variant-numeric-tabular">
               <div className="flex items-center space-x-4">
                 <button
                   onClick={togglePlay}
