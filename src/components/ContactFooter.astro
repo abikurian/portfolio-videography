@@ -1,15 +1,16 @@
 ---
 // ContactFooter.astro — Big display CTA line, copy email with toast, socials & footer row
-import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ToastNotification } from './ToastNotification';
+import { PORTFOLIO_DATA } from "../data/portfolioData";
+import { ToastNotification } from "./ToastNotification";
 ---
 
 <footer id="contact" class="relative w-full bg-bg-raised border-t border-line">
   <div class="max-w-container mx-auto px-5 md:px-10 py-20 md:py-28">
-    
     {/* Section Timeline Marker Header */}
     <div class="relative flex items-center mb-10 md:mb-14">
-      <div class="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg-raised z-10 flex items-center space-x-2">
+      <div
+        class="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg-raised z-10 flex items-center space-x-2"
+      >
         <span class="text-text font-bold">CONTACT</span>
       </div>
       <div class="flex-grow h-[1px] bg-line"></div>
@@ -17,12 +18,15 @@ import { ToastNotification } from './ToastNotification';
 
     {/* Display CTA Headline */}
     <div class="flex flex-col space-y-8 max-w-4xl">
-      <h2 class="font-display text-display font-extrabold text-text tracking-tighter leading-[0.92]">
+      <h2
+        class="font-display text-display font-extrabold text-text tracking-tighter leading-[0.92]"
+      >
         {PORTFOLIO_DATA.contact.headline}
       </h2>
 
       <p class="font-sans text-body-lg text-text-dim max-w-xl">
-        Available for beat-synced edits, color grading, narrative cuts, and event promos.
+        Available for beat-synced edits, color grading, narrative cuts, and
+        event promos.
       </p>
 
       {/* Copy-to-Clipboard Email Component */}
@@ -32,38 +36,41 @@ import { ToastNotification } from './ToastNotification';
     </div>
 
     {/* Social Links Row */}
-    <div class="mt-12 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-6 font-sans text-xs tracking-widest uppercase font-variant-numeric-tabular">
+    <div
+      class="mt-12 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-6 font-sans text-xs tracking-widest uppercase font-variant-numeric-tabular"
+    >
       <div class="flex flex-wrap items-center gap-6">
-        {PORTFOLIO_DATA.contact.socials.map((social) => (
-          <a
-            key={social.name}
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="min-h-[44px] min-w-[44px] inline-flex items-center text-text-dim hover:text-accent transition-colors duration-fast"
-          >
-            {social.name} ↗
-          </a>
-        ))}
+        {
+          PORTFOLIO_DATA.contact.socials.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="min-h-[44px] min-w-[44px] inline-flex items-center text-text-dim hover:text-accent transition-colors duration-fast"
+            >
+              {social.name} ↗
+            </a>
+          ))
+        }
       </div>
 
       <div class="text-text-faint text-[11px]">
         S-LOG3 / REC.709 / COLOR GRADED
       </div>
     </div>
-
   </div>
 
   {/* Bottom Footer Row */}
   <div class="w-full border-t border-line bg-bg-sunken py-6">
-    <div class="max-w-container mx-auto px-5 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-text-faint font-variant-numeric-tabular">
+    <div
+      class="max-w-container mx-auto px-5 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-text-faint font-variant-numeric-tabular"
+    >
       <div>
         © 2026 {PORTFOLIO_DATA.name}
       </div>
 
-      <div class="text-text-dim">
-        Designed & edited in Kochi, Kerala
-      </div>
+      <div class="text-text-dim">Designed & edited in Kochi, Kerala</div>
 
       <a
         href="#"

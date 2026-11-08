@@ -14,7 +14,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
     <div className="relative w-full py-12 md:py-16 border-b border-line group transition-colors duration-base">
       <div className="max-w-container mx-auto px-5 md:px-10">
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:flex-row-reverse'}`}>
-          
+
           {/* Text Details Column */}
           <div className={`lg:col-span-5 flex flex-col space-y-4 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
             {/* Project Title with Right Shift on Hover */}
@@ -32,8 +32,12 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
             {/* Metadata Chips: STYLE / TOOLS / RUNTIME */}
             <div className="pt-2 flex flex-wrap items-center gap-2 font-sans text-[11px] text-text-faint tracking-wider uppercase font-medium font-variant-numeric-tabular">
               <span className="text-text font-semibold">STYLE: {project.style}</span>
-              <span>·</span>
-              <span>TOOLS: {project.tools.join(" / ")}</span>
+              {project.tools.length > 0 && (
+                <>
+                  <span>·</span>
+                  <span>TOOLS: {project.tools.join(" / ")}</span>
+                </>
+              )}
               {project.runtime && (
                 <>
                   <span>·</span>
