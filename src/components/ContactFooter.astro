@@ -1,68 +1,217 @@
 ---
-// ContactFooter.astro — Big display CTA line, copy email with toast, socials & footer row
+// ContactFooter.astro — 2-Column Contact & Form Section with Footer
 import { PORTFOLIO_DATA } from "../data/portfolioData";
-import { ToastNotification } from "./ToastNotification";
 ---
 
-<footer id="contact" class="relative w-full bg-bg-raised border-t border-line">
+<footer id="contact" class="relative w-full bg-[#101010] border-t border-[#2B2926]">
   <div class="max-w-container mx-auto px-5 md:px-10 py-20 md:py-28">
-    {/* Section Timeline Marker Header */}
+    
+    {/* Section Header */}
     <div class="relative flex items-center mb-10 md:mb-14">
       <div
-        class="font-sans text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-bg-raised z-10 flex items-center space-x-2"
+        class="font-mono text-xs md:text-sm tracking-[0.06em] uppercase text-text-dim pr-4 bg-[#101010] z-10 flex items-center space-x-2"
       >
         <span class="text-text font-bold">CONTACT</span>
       </div>
-      <div class="flex-grow h-[1px] bg-line"></div>
+      <div class="flex-grow h-[1px] bg-[#2B2926]"></div>
     </div>
 
-    {/* Display CTA Headline */}
-    <div class="flex flex-col space-y-8 max-w-4xl">
-      <h2
-        class="font-display text-display font-extrabold text-text tracking-tighter leading-[0.92]"
-      >
-        {PORTFOLIO_DATA.contact.headline}
-      </h2>
+    {/* 2-Column Grid: Left 35%, Right 65% on desktop */}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      {/* Left Column (35% width -> 4 or 5 cols out of 12) */}
+      <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-10">
+        <div class="space-y-8">
+          {/* Contact Info Header */}
+          <div class="space-y-4">
+            <h3 class="font-sans text-xs uppercase tracking-widest text-white font-semibold">
+              CONTACT INFO
+            </h3>
+            
+            {/* Contact Blocks */}
+            <div class="space-y-4 pt-2">
+              {/* Mail Us */}
+              <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full border border-[#2B2926] bg-[#171717] flex items-center justify-center shrink-0 text-white">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-sans text-[11px] uppercase tracking-wider text-[#929292]">Mail Us</span>
+                  <a href={`mailto:${PORTFOLIO_DATA.contact.email}`} class="font-sans text-sm text-[#E5E5E5] hover:text-[#687BFF] transition-colors break-all">
+                    {PORTFOLIO_DATA.contact.email}
+                  </a>
+                </div>
+              </div>
 
-      <p class="font-sans text-body-lg text-text-dim max-w-xl">
-        Available for beat-synced edits, color grading, narrative cuts, and
-        event promos.
-      </p>
+              {/* Location */}
+              <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full border border-[#2B2926] bg-[#171717] flex items-center justify-center shrink-0 text-white">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-sans text-[11px] uppercase tracking-wider text-[#929292]">Location</span>
+                  <span class="font-sans text-sm text-[#E5E5E5]">
+                    Kochi, Kerala, India
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      {/* Copy-to-Clipboard Email Component */}
-      <div class="pt-4">
-        <ToastNotification client:load email={PORTFOLIO_DATA.contact.email} />
+          {/* Social Info */}
+          <div class="space-y-4 pt-4 border-t border-[#2B2926]">
+            <h3 class="font-sans text-xs uppercase tracking-widest text-white font-semibold">
+              SOCIAL INFO
+            </h3>
+            
+            {/* Social Icons row */}
+            <div class="flex items-center space-x-3">
+              {/* GitHub */}
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                class="w-11 h-11 rounded-full border border-[#2B2926] bg-[#171717] hover:border-[#687BFF] hover:text-[#687BFF] text-white flex items-center justify-center transition-colors shrink-0"
+              >
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                class="w-11 h-11 rounded-full border border-[#2B2926] bg-[#171717] hover:border-[#687BFF] hover:text-[#687BFF] text-white flex items-center justify-center transition-colors shrink-0"
+              >
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/abii.aep"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram Profile"
+                class="w-11 h-11 rounded-full border border-[#2B2926] bg-[#171717] hover:border-[#687BFF] hover:text-[#687BFF] text-white flex items-center justify-center transition-colors shrink-0"
+              >
+                <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.75">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+
+              {/* Behance */}
+              <a
+                href="https://behance.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Behance Profile"
+                class="w-11 h-11 rounded-full border border-[#2B2926] bg-[#171717] hover:border-[#687BFF] hover:text-[#687BFF] text-white flex items-center justify-center transition-colors shrink-0"
+              >
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.105 0-5.5-2.012-5.5-5.5 0-3.293 2.271-5.5 5.5-5.5 3.254 0 5.168 2.187 4.902 6.5h-7.402c.074 1.488 1.054 2.5 2.5 2.5 1.139 0 1.954-.51 2.324-1.25l2.402.25zm-4.809-5c-.144-1.096-.92-1.874-2.191-1.874-1.246 0-2.049.778-2.191 1.874h4.382zm-12.917-8h5.5c2.485 0 4.5 1.343 4.5 3.5 0 1.307-.732 2.402-1.789 2.978 1.482.598 2.289 1.902 2.289 3.522 0 2.457-2.015 4-4.5 4h-6v-14zm3 5h2c.828 0 1.5-.448 1.5-1.25s-.672-1.25-1.5-1.25h-2v2.5zm0 6.5h2.5c.828 0 1.5-.448 1.5-1.25s-.672-1.25-1.5-1.25h-2.5v2.5z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-text-faint font-mono text-[11px] pt-4">
+          S-LOG3 / REC.709 / COLOR GRADED
+        </div>
       </div>
-    </div>
 
-    {/* Social Links Row */}
-    <div
-      class="mt-12 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-6 font-sans text-xs tracking-widest uppercase font-variant-numeric-tabular"
-    >
-      <div class="flex flex-wrap items-center gap-6">
-        {
-          PORTFOLIO_DATA.contact.socials.map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="min-h-[44px] min-w-[44px] inline-flex items-center text-text-dim hover:text-accent transition-colors duration-fast"
+      {/* Right Column (65% width -> 7 cols out of 12) */}
+      <div class="lg:col-span-7 bg-[#171717] border border-[#2B2926] rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl">
+        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mb-8">
+          Let’s work <span class="text-[#687BFF]">together.</span>
+        </h2>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+          {/* Web3Forms Access Key */}
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+
+          {/* Name Field */}
+          <div>
+            <label for="name" class="sr-only">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Name"
+              required
+              class="w-full bg-[#222222] border border-transparent focus:border-[#687BFF] text-[#E5E5E5] placeholder-[#929292] rounded-xl px-4 py-3.5 text-sm font-sans outline-none transition-colors"
+            />
+          </div>
+
+          {/* Email Field */}
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+              class="w-full bg-[#222222] border border-transparent focus:border-[#687BFF] text-[#E5E5E5] placeholder-[#929292] rounded-xl px-4 py-3.5 text-sm font-sans outline-none transition-colors"
+            />
+          </div>
+
+          {/* Subject Field */}
+          <div>
+            <label for="subject" class="sr-only">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="Subject"
+              required
+              class="w-full bg-[#222222] border border-transparent focus:border-[#687BFF] text-[#E5E5E5] placeholder-[#929292] rounded-xl px-4 py-3.5 text-sm font-sans outline-none transition-colors"
+            />
+          </div>
+
+          {/* Message Field */}
+          <div>
+            <label for="message" class="sr-only">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Message"
+              rows="5"
+              required
+              class="w-full bg-[#222222] border border-transparent focus:border-[#687BFF] text-[#E5E5E5] placeholder-[#929292] rounded-xl px-4 py-3.5 text-sm font-sans outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          {/* Submit Button */}
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="w-full min-h-[44px] bg-[#303030] hover:bg-[#3d3d3d] active:bg-[#252525] text-white font-sans font-medium text-sm rounded-xl py-3.5 px-6 transition-colors duration-fast cursor-pointer flex items-center justify-center text-center"
             >
-              {social.name} ↗
-            </a>
-          ))
-        }
+              Send Message
+            </button>
+          </div>
+        </form>
       </div>
 
-      <div class="text-text-faint text-[11px]">
-        S-LOG3 / REC.709 / COLOR GRADED
-      </div>
     </div>
   </div>
 
   {/* Bottom Footer Row */}
-  <div class="w-full border-t border-line bg-bg-sunken py-6">
+  <div class="w-full border-t border-[#2B2926] bg-[#0D0C0B] py-6">
     <div
       class="max-w-container mx-auto px-5 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-text-faint font-variant-numeric-tabular"
     >
@@ -81,3 +230,4 @@ import { ToastNotification } from "./ToastNotification";
     </div>
   </div>
 </footer>
+
