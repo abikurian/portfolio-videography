@@ -238,9 +238,6 @@ export const ShowreelPlayer: React.FC = () => {
                 <span>
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </span>
-                <span className="hidden sm:inline-block text-text-faint">
-                  [ J/K/L NAVIGATION ENABLED ]
-                </span>
               </div>
 
               <div className="flex items-center space-x-4">

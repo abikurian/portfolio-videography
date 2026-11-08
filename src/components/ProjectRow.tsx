@@ -34,8 +34,12 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               <span className="text-text font-semibold">STYLE: {project.style}</span>
               <span>·</span>
               <span>TOOLS: {project.tools.join(" / ")}</span>
-              <span>·</span>
-              <span className="text-accent font-semibold">RUNTIME: {project.runtime}</span>
+              {project.runtime && (
+                <>
+                  <span>·</span>
+                  <span className="text-accent font-semibold">RUNTIME: {project.runtime}</span>
+                </>
+              )}
             </div>
 
             {/* Play Button in text column */}
@@ -82,10 +86,12 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven, onOpenL
               {/* Scrim Overlay */}
               <div className="absolute inset-0 scrim-bottom opacity-60 pointer-events-none"></div>
 
-              {/* Bottom-Right Duration Label */}
-              <div className="absolute bottom-3 right-3 font-sans text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line font-medium font-variant-numeric-tabular">
-                {project.runtime}
-              </div>
+              {/* Bottom-Right Duration Label - only show if runtime exists */}
+              {project.runtime && (
+                <div className="absolute bottom-3 right-3 font-sans text-[11px] text-text bg-bg-sunken/80 px-2.5 py-1 border border-line font-medium font-variant-numeric-tabular">
+                  {project.runtime}
+                </div>
+              )}
 
               {/* Hover Minimal Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-fast bg-bg-sunken/50">
