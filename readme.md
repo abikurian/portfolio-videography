@@ -5,7 +5,6 @@ A sleek, high-performance portfolio website designed to showcase fast-paced edit
 Built with **Astro** and **React** for maximum speed and minimal JavaScript overhead, ensuring that heavy video assets load instantly without compromising performance.
 
 ## 🚀 Tech Stack
-
 *   **Framework:** [Astro](https://astro.build/) (Static Site Generation)
 *   **UI Components:** [React](https://reactjs.org/)
 *   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
